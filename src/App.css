@@ -1,0 +1,25 @@
+body {
+  width: 600px;
+  font-family: 'Lora', serif;
+  margin: 0 auto;
+}
+
+.wrapper-paragraph-left > .wrapper-picture > .picture {
+  float: left !important;
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+.wrapper-text {
+  margin-top: 0;
+  text-align: justify;
+}
+
+.picture {
+  height: 260px;
+  border-radius: 5px;
+  float: right;
+  margin-left: 10px;
+}
+
+
