@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import parse from 'html-react-parser';
+import readTextFile from './scripts/readTextFile.js';
+import file from '../src/documents/teste.txt';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [text, setText] = useState('');
+  readTextFile(file).then((res) => setText(res));
+
+  return <>{parse(text)}</>;
 }
 
 export default App;
