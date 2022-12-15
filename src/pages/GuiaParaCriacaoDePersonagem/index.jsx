@@ -19,13 +19,13 @@ async function readTextFile(path) {
       data = data.replaceAll('[/titulo]', '</h2>');
       
       //replace wrapper-paragraph
-      data = data.replaceAll('[p]\r\n', '<div className="wrapper-paragraph">');
-      data = data.replaceAll('[p,left]\r\n', '<div className="wrapper-paragraph wrapper-paragraph-left">');
-      data = data.replaceAll('[/p]\r\n', '</div>');
+      data = data.replaceAll('[p]', '<div className="wrapper-paragraph">');
+      data = data.replaceAll('[p,left]', '<div className="wrapper-paragraph wrapper-paragraph-left">');
+      data = data.replaceAll('[/p]', '</div>');
       
       //replace text
-      data = data.replaceAll('[txt]\r\n', '<p className="wrapper-text">');
-      data = data.replaceAll('[/txt]\r\n', '</p>');
+      data = data.replaceAll('[txt]', '<p className="wrapper-text">');
+      data = data.replaceAll('[/txt]', '</p>');
 
       //replace strong
       data = data.replaceAll('[b]', '<b>');
