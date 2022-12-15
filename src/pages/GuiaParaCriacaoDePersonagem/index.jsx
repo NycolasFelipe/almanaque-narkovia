@@ -16,7 +16,7 @@ async function readTextFile(path) {
 
       //replace title
       data = data.replaceAll('[titulo]', '<h2>');
-      data = data.replaceAll('[/titulo]\r\n', '</h2>');
+      data = data.replaceAll('[/titulo]', '</h2>');
       
       //replace wrapper-paragraph
       data = data.replaceAll('[p]\r\n', '<div className="wrapper-paragraph">');
