@@ -10,7 +10,7 @@ async function readTextFile(path) {
       }
 
       //replace title
-      data = data.replaceAll('[titulo]', '<h2>');
+      data = data.replaceAll('[titulo]', '<h2 className="wrapper-paragraph-title">');
       data = data.replaceAll('[/titulo]\r\n', '</h2>');
       
       //replace wrapper-paragraph
@@ -19,12 +19,18 @@ async function readTextFile(path) {
       data = data.replaceAll('[/p]\r\n', '</div>');
       
       //replace text
-      data = data.replaceAll('[txt]\r\n', '<p className="wrapper-text">');
+      data = data.replaceAll('[txt]\r\n', '<p className="wrapper-paragraph-text">');
       data = data.replaceAll('[/txt]\r\n', '</p>');
 
-      //replace strong
+      //replace bold
+
+      //replace bold
       data = data.replaceAll('[b]', '<b>');
       data = data.replaceAll('[/b]', '</b>');
+
+      //replace underline
+      data = data.replaceAll('[u]', '<span className="wrapper-paragraph-underline">');
+      data = data.replaceAll('[/u]', '</span>');
 
       //replace italic
       data = data.replaceAll('[i]', '<i>');
