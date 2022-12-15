@@ -11,7 +11,7 @@ async function readTextFile(path) {
       let urls = data.split('[img](');
       for (let i = 1; i < urls.length; i++) {
         let url = urls[i].split(')')[0];
-        data = data.replaceAll(`[img](${url})\r\n`, `<div className="wrapper-picture"><img src='${url}' className="picture"></img></div>`);
+        data = data.replaceAll(`[img](${url})`, `<div className="wrapper-picture"><img src='${url}' className="picture"></img></div>`);
       }
 
       //replace title
@@ -34,9 +34,6 @@ async function readTextFile(path) {
       //replace italic
       data = data.replaceAll('[i]', '<i>');
       data = data.replaceAll('[/i]', '</i>');
-
-      //replace newline
-      data = data.replaceAll('\n', '<br>');
 
       return data;
     });
