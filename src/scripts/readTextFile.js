@@ -6,21 +6,21 @@ async function readTextFile(path) {
       let urls = data.split('[img](');
       for (let i = 1; i < urls.length; i++) {
         let url = urls[i].split(')')[0];
-        data = data.replaceAll(`[img](${url})\r\n`, `<div className="wrapper-picture"><img src='${url}' className="picture"></img></div>`);
+        data = data.replaceAll(`[img](${url})`, `<div className="wrapper-picture"><img src='${url}' className="picture"></img></div>`);
       }
 
       //replace title
       data = data.replaceAll('[titulo]', '<h2 className="wrapper-paragraph-title">');
-      data = data.replaceAll('[/titulo]\r\n', '</h2>');
+      data = data.replaceAll('[/titulo]', '</h2>');
       
       //replace wrapper-paragraph
-      data = data.replaceAll('[p]\r\n', '<div className="wrapper-paragraph">');
-      data = data.replaceAll('[p,left]\r\n', '<div className="wrapper-paragraph wrapper-paragraph-left">');
-      data = data.replaceAll('[/p]\r\n', '</div>');
+      data = data.replaceAll('[p]', '<div className="wrapper-paragraph">');
+      data = data.replaceAll('[p,left]', '<div className="wrapper-paragraph wrapper-paragraph-left">');
+      data = data.replaceAll('[/p]', '</div>');
       
       //replace text
-      data = data.replaceAll('[txt]\r\n', '<p className="wrapper-paragraph-text">');
-      data = data.replaceAll('[/txt]\r\n', '</p>');
+      data = data.replaceAll('[txt]', '<p className="wrapper-paragraph-text">');
+      data = data.replaceAll('[/txt]', '</p>');
 
       //replace bold
 
@@ -35,9 +35,6 @@ async function readTextFile(path) {
       //replace italic
       data = data.replaceAll('[i]', '<i>');
       data = data.replaceAll('[/i]', '</i>');
-
-      //replace newline
-      data = data.replaceAll('\n', '<br>');
 
       return data;
     });
