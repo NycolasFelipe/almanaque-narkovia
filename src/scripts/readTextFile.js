@@ -12,6 +12,10 @@ async function readTextFile(path) {
       //replace title
       data = data.replaceAll('[titulo]', '<h2 className="wrapper-paragraph-title">');
       data = data.replaceAll('[/titulo]', '</h2>');
+
+      //replace subtitle
+      data = data.replaceAll('[subtitulo]', '<h3 className="wrapper-paragraph-subtitle">');
+      data = data.replaceAll('[/subtitulo]', '</h3>');
       
       //replace wrapper-paragraph
       data = data.replaceAll('[p]', '<div className="wrapper-paragraph">');
@@ -21,6 +25,9 @@ async function readTextFile(path) {
       //replace text
       data = data.replaceAll('[txt]', '<p className="wrapper-paragraph-text">');
       data = data.replaceAll('[/txt]', '</p>');
+
+      //replace text fill
+      data = data.replaceAll('[txtfill]', '<div className="paragraph-text-fill">');
 
       //replace bold
 
