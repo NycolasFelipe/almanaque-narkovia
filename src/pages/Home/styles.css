@@ -60,3 +60,20 @@
   transition: border-color 0.5s ease !important;
   background: #0000005b !important;
 }
+
+@media screen and (max-width: 800px) {
+  .wrapper-home-title > h1 {
+    font-size: 2rem;
+  }
+
+  .wrapper-home-title > h2 {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .wrapper-home-options > button {
+    font-size: 1rem;
+    padding: 30px;
+    max-width: 80vw;
+  }
+}
