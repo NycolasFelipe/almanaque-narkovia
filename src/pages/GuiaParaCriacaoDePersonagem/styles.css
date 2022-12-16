@@ -151,6 +151,10 @@
     font-size: 1.1rem;
   }
 
+  .wrapper-paragraph-text {
+    text-align: left;
+  }
+
   .picture {
     float: none !important;
     margin: 0 auto !important;
