@@ -84,10 +84,22 @@ function replaceDoubleTag(text, char, newChar) {
   return text;
 }
 
+function removeGoogleDocsHtml(html) {
+  let plainText = document.createElement("div");
+  plainText.innerHTML = html;
+  plainText = plainText.getElementsByClassName('doc-content')[0];
+  plainText = plainText.textContent || plainText.innerText || "";
+  plainText = plainText.replaceAll('\t', '');
+  return plainText;
+}
+
 async function readTextFile(path) {
   let response = await fetch(path)
     .then(res => res.text())
     .then(data => {
+      //remove html
+      data = removeGoogleDocsHtml(data);
+
       //replace image
       let urls = data.split('@img(');
       for (let i = 1; i < urls.length; i++) {
