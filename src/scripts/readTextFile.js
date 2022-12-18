@@ -133,15 +133,11 @@ function removeGoogleDocsHtml(html) {
       stylesProperties.underline = `c${i}`;
   }
 
-  //set bold tag
   plainText = setTag(plainText, stylesProperties.bold, '@b');
-
-  //set italic tag
   plainText = setTag(plainText, stylesProperties.italic, '@i');
-
-  //set underline tag
   plainText = setTag(plainText, stylesProperties.underline, '@u');
 
+  //removing html tags
   plainText = plainText.textContent || plainText.innerText || "";
   plainText = plainText.replaceAll('\t', '');
   return plainText;
