@@ -6,12 +6,7 @@
   @pe @pe                           div (para que a imagem fique na esquerda do parágrafo)
   @t @t                             p
   @fill                             div (para completar parágrafos com caracteres insuficientes)
-  @img(nome_da_imagem)                         img
-  
-  SIMBOLOS PARA ESTILIZAÇÃO
-  *texto*   negrito
-  $texto$   sublinhado
-  _texto_   italico
+  @img                              img
 */
 
 function replaceDoubleTag(text, char, newChar) {

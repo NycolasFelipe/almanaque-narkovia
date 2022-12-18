@@ -1,6 +1,6 @@
-import './styles.css';
-import { Button, ButtonGroup } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import './styles.css';
 
 function Home() {
   const navigate = useNavigate();

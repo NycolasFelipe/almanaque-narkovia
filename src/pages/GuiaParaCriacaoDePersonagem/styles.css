@@ -46,7 +46,7 @@
   flex-wrap: wrap;
   flex-direction: column;
   color: #fff;
-  background-image: linear-gradient(to bottom, #000000a0, #000 40%);
+  background: linear-gradient(to bottom, #000000a0, #000 60%);
   padding-top: 280px;
   padding-bottom: 60px;
 }
