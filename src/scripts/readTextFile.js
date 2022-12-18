@@ -6,11 +6,11 @@
   @pe @pe                           div (para que a imagem fique na esquerda do parágrafo)
   @t @t                             p
   @fill                             div (para completar parágrafos com caracteres insuficientes)
-  @img(url)                         img
+  @img(nome_da_imagem)                         img
   
   SIMBOLOS PARA ESTILIZAÇÃO
   *texto*   negrito
-  $texto$   underline
+  $texto$   sublinhado
   _texto_   italico
 */
 
@@ -19,7 +19,7 @@ function replaceDoubleTag(text, char, newChar) {
   for (let i = 0; i < text.length-1; i++) {
     if (i % 2 == 0) {
       switch(newChar) {
-        case 'underline':
+        case 'u':
           text[i] += '<span className="wrapper-paragraph-underline">';
           break;
         
@@ -54,7 +54,7 @@ function replaceDoubleTag(text, char, newChar) {
     }
     else {
       switch(newChar) {
-        case 'underline': 
+        case 'u': 
           text[i] += '</span>';
           break;
 
@@ -84,10 +84,64 @@ function replaceDoubleTag(text, char, newChar) {
   return text;
 }
 
+function setTag(text, itemClass, tag) {
+  let itemsItalicLength = text.getElementsByClassName(itemClass).length;
+  for (let i = 0; i < itemsItalicLength; i++) {
+    text.getElementsByClassName(itemClass)[i].innerText =
+      `${tag}${text.getElementsByClassName(itemClass)[i].innerText}${tag}`;
+  }
+  return text;
+}
+
 function removeGoogleDocsHtml(html) {
-  let plainText = document.createElement("div");
+  let plainText = document.createElement('div');
   plainText.innerHTML = html;
   plainText = plainText.getElementsByClassName('doc-content')[0];
+
+  //set image url and tag
+  let urls = plainText.innerHTML.split('@img');
+  for (let i = 1; i < urls.length; i++) {
+    try {
+      let url = urls[i].split('src="')[1];
+      url = url.split('"')[0];
+      urls[i] = `@img(${url})` + urls[i];
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  plainText.innerHTML = urls.join('');
+
+  //set text styling tags
+  let styles = document.createElement('div');
+  styles.innerHTML = html;
+  styles = styles.getElementsByTagName('style')[0];
+
+  let stylesProperties = {
+    'bold': null,
+    'italic': null,
+    'underline': null,
+  }
+
+  for (let i = 3; i < 6; i++) {
+    let property = styles.innerHTML.split(`.c${i}`)[1];
+    property = property.split('}')[0];
+    if (property.includes('font-weight')) 
+      stylesProperties.bold = `c${i}`;
+    else if (property.includes('font-style:italic'))
+      stylesProperties.italic = `c${i}`;
+    else if (property.includes('text-decoration:underline'))
+      stylesProperties.underline = `c${i}`;
+  }
+
+  //set bold tag
+  plainText = setTag(plainText, stylesProperties.bold, '@b');
+
+  //set italic tag
+  plainText = setTag(plainText, stylesProperties.italic, '@i');
+
+  //set underline tag
+  plainText = setTag(plainText, stylesProperties.underline, '@u');
+
   plainText = plainText.textContent || plainText.innerText || "";
   plainText = plainText.replaceAll('\t', '');
   return plainText;
@@ -127,13 +181,13 @@ async function readTextFile(path) {
       data = replaceDoubleTag(data, '@fill', 'fill');
 
       //replace bold
-      data = replaceDoubleTag(data, '*', 'b');
+      data = replaceDoubleTag(data, '@b', 'b');
 
       //replace underline
-      data = replaceDoubleTag(data, '$', 'underline');
+      data = replaceDoubleTag(data, '@u', 'u');
 
       //replace italic
-      data = replaceDoubleTag(data, '_', 'i');
+      data = replaceDoubleTag(data, '@i', 'i');
 
       return data;
     });
