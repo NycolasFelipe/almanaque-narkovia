@@ -117,13 +117,18 @@ function removeGoogleDocsHtml(html) {
     'underline': null,
   }
 
-  for (let i = 0; i < 7; i++) {
-    let property = styles.innerHTML.split(`.c${i}`)[1];
-    property = property.split('}')[0];
-    if (property.includes('font-weight')) stylesProperties.bold = `c${i}`;
-    else if (property.includes('italic')) stylesProperties.italic = `c${i}`;
-    else if (property.includes('underline')) stylesProperties.underline = `c${i}`;
+  try {
+    for (let i = 0; i < 7; i++) {
+      let property = styles.innerHTML.split(`.c${i}`)[1];
+      property = property.split('}')[0];
+      if (property.includes('font-weight')) stylesProperties.bold = `c${i}`;
+      else if (property.includes('italic')) stylesProperties.italic = `c${i}`;
+      else if (property.includes('underline')) stylesProperties.underline = `c${i}`;
+    }
+  } catch (err) {
+    console.error(err);
   }
+
 
   plainText = setTag(plainText, stylesProperties.bold, '@b');
   plainText = setTag(plainText, stylesProperties.italic, '@i');
