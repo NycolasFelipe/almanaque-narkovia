@@ -12,7 +12,7 @@
 function replaceDoubleTag(text, char, newChar) {
   text = text.split(char);
   for (let i = 0; i < text.length-1; i++) {
-    if (i % 2 == 0) {
+    if (i % 2 === 0) {
       switch(newChar) {
         case 'u':
           text[i] += '<span className="wrapper-paragraph-underline">';
