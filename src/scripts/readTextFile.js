@@ -41,6 +41,10 @@ function replaceDoubleTag(text, char, newChar) {
         case 'fill':
           text[i] += '<div className="paragraph-text-fill">';
           break;
+
+        case 'debug':
+          text[i] += '<div className="wrapper-debug">';
+          break;
         
         default:
           text[i] += `<${newChar}>`;
@@ -66,6 +70,10 @@ function replaceDoubleTag(text, char, newChar) {
           break;
         
         case 'fill':
+          text[i] += '</div>';
+          break;
+
+        case 'debug':
           text[i] += '</div>';
           break;
         
@@ -116,7 +124,7 @@ function removeGoogleDocsHtml(html) {
     'italic': null,
     'underline': null,
   }
-
+  
   try {
     for (let i = 0; i < 7; i++) {
       let property = styles.innerHTML.split(`.c${i}`)[1];
@@ -128,7 +136,6 @@ function removeGoogleDocsHtml(html) {
   } catch (err) {
     console.error(err);
   }
-
 
   plainText = setTag(plainText, stylesProperties.bold, '@b');
   plainText = setTag(plainText, stylesProperties.italic, '@i');
@@ -181,6 +188,9 @@ async function readTextFile(path) {
 
       //replace italic
       data = replaceDoubleTag(data, '@i', 'i');
+
+      //replace debug tag
+      data = replaceDoubleTag(data, '@debug', 'debug');
 
       return data;
     });

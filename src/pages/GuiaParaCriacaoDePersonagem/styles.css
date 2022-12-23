@@ -162,3 +162,7 @@
     margin-bottom: 20px !important;
   }
 }
+
+.wrapper-debug {
+  display: none;
+}
