@@ -109,7 +109,7 @@ function removeGoogleDocsHtml(html) {
       url = url.split('"')[0];
       urls[i] = `#img(${url})` + urls[i];
     } catch (err) {
-      console.log(err);
+      //não encontrou imagens
     }
   }
   plainText.innerHTML = urls.join('');
@@ -134,7 +134,7 @@ function removeGoogleDocsHtml(html) {
       else if (property.includes('underline')) stylesProperties.underline = `c${i}`;
     }
   } catch (err) {
-    console.error(err);
+    //não encontrou texto estilizado
   }
 
   plainText = setTag(plainText, stylesProperties.bold, '#b');

@@ -6,7 +6,10 @@ import './styles.css';
 import { ChevronUpIcon } from '@chakra-ui/icons';
 
 function GuiaParaCriacaoDePersonagem() {
-  const doc_url = 'https://docs.google.com/document/d/e/2PACX-1vSIJFBGP2Ie4JodN5Blzg9LCjYX_cTj2WDLJCc4Bn1_RZ2NAgRX7_NpumPoDas7hmk_CpbT17OJ4kx0/pub?embedded=true';
+  let date = new Date();
+  date = JSON.stringify(date);
+  date = date.replaceAll('-', '').replaceAll(':', '').replaceAll('.', '');
+  const doc_url = `https://docs.google.com/document/d/e/2PACX-1vSIJFBGP2Ie4JodN5Blzg9LCjYX_cTj2WDLJCc4Bn1_RZ2NAgRX7_NpumPoDas7hmk_CpbT17OJ4kx0/pub?${date}`;
   const navigate = useNavigate();
   const [text, setText] = useState('');
   useEffect(() => {
