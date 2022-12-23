@@ -1,12 +1,12 @@
 /*
   TAGS DE MARCAÇÃO
-  @titulo titulo @titulo            h2
-  @subtitulo subtitulo @subtitulo   h3
-  @p @p                             div
-  @pe @pe                           div (para que a imagem fique na esquerda do parágrafo)
-  @t @t                             p
-  @fill                             div (para completar parágrafos com caracteres insuficientes)
-  @img                              img
+  #titulo titulo #titulo            h2
+  #subtitulo subtitulo #subtitulo   h3
+  #p #p                             div
+  #pe #pe                           div (para que a imagem fique na esquerda do parágrafo)
+  #t #t                             p
+  #fill                             div (para completar parágrafos com caracteres insuficientes)
+  #img                              img
 */
 
 function replaceDoubleTag(text, char, newChar) {
@@ -102,12 +102,12 @@ function removeGoogleDocsHtml(html) {
   plainText = plainText.getElementsByClassName('doc-content')[0];
 
   //set image url and tag
-  let urls = plainText.innerHTML.split('@img');
+  let urls = plainText.innerHTML.split('#img');
   for (let i = 1; i < urls.length; i++) {
     try {
       let url = urls[i].split('src="')[1];
       url = url.split('"')[0];
-      urls[i] = `@img(${url})` + urls[i];
+      urls[i] = `#img(${url})` + urls[i];
     } catch (err) {
       console.log(err);
     }
@@ -137,9 +137,9 @@ function removeGoogleDocsHtml(html) {
     console.error(err);
   }
 
-  plainText = setTag(plainText, stylesProperties.bold, '@b');
-  plainText = setTag(plainText, stylesProperties.italic, '@i');
-  plainText = setTag(plainText, stylesProperties.underline, '@u');
+  plainText = setTag(plainText, stylesProperties.bold, '#b');
+  plainText = setTag(plainText, stylesProperties.italic, '#i');
+  plainText = setTag(plainText, stylesProperties.underline, '#u');
 
   //removing html tags
   plainText = plainText.textContent || plainText.innerText || "";
@@ -155,42 +155,42 @@ async function readTextFile(path) {
       data = removeGoogleDocsHtml(data);
 
       //replace image
-      let urls = data.split('@img(');
+      let urls = data.split('#img(');
       for (let i = 1; i < urls.length; i++) {
         let url = urls[i].split(')')[0];
         data = data.replaceAll(
-          `@img(${url})`, 
+          `#img(${url})`, 
           `<div className="wrapper-picture"><img src='${url}' className="picture"></img></div>`
         );
       }
 
       //replace title
-      data = replaceDoubleTag(data, '@titulo', 'h2');
+      data = replaceDoubleTag(data, '#titulo', 'h2');
 
       //replace subtitle
-      data = replaceDoubleTag(data, '@subtitulo', 'h3');
+      data = replaceDoubleTag(data, '#subtitulo', 'h3');
       
       //replace wrapper-paragraph
-      data = replaceDoubleTag(data, '@pe', 'pe');
-      data = replaceDoubleTag(data, '@p', 'p');
+      data = replaceDoubleTag(data, '#pe', 'pe');
+      data = replaceDoubleTag(data, '#p', 'p');
       
       //replace text
-      data = replaceDoubleTag(data, '@t', 't');
+      data = replaceDoubleTag(data, '#t', 't');
       
       //replace text fill
-      data = replaceDoubleTag(data, '@fill', 'fill');
+      data = replaceDoubleTag(data, '#fill', 'fill');
 
       //replace bold
-      data = replaceDoubleTag(data, '@b', 'b');
+      data = replaceDoubleTag(data, '#b', 'b');
 
       //replace underline
-      data = replaceDoubleTag(data, '@u', 'u');
+      data = replaceDoubleTag(data, '#u', 'u');
 
       //replace italic
-      data = replaceDoubleTag(data, '@i', 'i');
+      data = replaceDoubleTag(data, '#i', 'i');
 
       //replace debug tag
-      data = replaceDoubleTag(data, '@debug', 'debug');
+      data = replaceDoubleTag(data, '#debug', 'debug');
 
       return data;
     });

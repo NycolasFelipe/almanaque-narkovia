@@ -49,6 +49,7 @@
   background: linear-gradient(to bottom, #000000a0, #000 60%);
   padding-top: 280px;
   padding-bottom: 60px;
+
 }
 
 .wrapper-paragraph {
@@ -105,6 +106,31 @@
   margin-top: 4px;
 }
 
+
+.scroll-top {
+  display: none;
+  background: #000;
+  position: fixed;
+  right: 60px;
+  bottom: 40px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 1.2;
+  font-size: 2rem;
+  border-radius: 50%;
+  border: 1px solid #ffffff38;
+  transition: all 0.3s ease;
+}
+
+.scroll-top:hover {
+  border: 1px solid #ffffffbb;
+}
+
+.wrapper-debug {
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
   .wrapper-guia-title > h1 {
     font-size: 2rem;
@@ -120,6 +146,11 @@
 
   .wrapper-paragraph {
     max-width: 80vw;
+  }
+
+  .scroll-top {
+    right: 20px;
+    bottom: 20px;
   }
 }
 
@@ -161,8 +192,4 @@
     margin-top: 20px !important;
     margin-bottom: 20px !important;
   }
-}
-
-.wrapper-debug {
-  display: none;
 }
