@@ -93,6 +93,10 @@
   padding-bottom: 40px;
 }
 
+.wrapper-picture {
+  padding-top: 20px;
+}
+
 .wrapper-paragraph-left > .wrapper-picture > .picture {
   float: left;
   margin-left: 0;
