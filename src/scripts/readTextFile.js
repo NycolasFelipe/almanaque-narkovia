@@ -117,7 +117,7 @@ function removeGoogleDocsHtml(html) {
   //set text styling tags
   let styles = document.createElement('div');
   styles.innerHTML = html;
-  styles = styles.getElementsByTagName('style')[0];
+  styles = styles.getElementsByTagName('style')[1];
 
   let stylesProperties = {
     'bold': null,
