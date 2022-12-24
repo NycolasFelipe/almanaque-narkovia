@@ -245,7 +245,7 @@ async function readTextFile(path) {
 
       let summary = setSummary(data);
 
-      return { 'data': data, 'summary': summary }
+      return { 'data': data, 'summary': summary };
     });
 
   return response;

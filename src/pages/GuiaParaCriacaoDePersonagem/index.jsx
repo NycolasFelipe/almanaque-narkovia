@@ -43,7 +43,6 @@ function GuiaParaCriacaoDePersonagem() {
           <h2>Sumário</h2>
           {parse(summary)}
         </div>
-        {/* <button onClick={() => console.log(text.data)}>teste</button> */}
         {parse(text)}
         <a className='scroll-top' href='#titulo'>
           <ChevronUpIcon />
