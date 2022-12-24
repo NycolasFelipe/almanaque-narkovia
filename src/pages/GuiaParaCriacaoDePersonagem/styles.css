@@ -47,9 +47,43 @@
   flex-direction: column;
   color: #fff;
   background: linear-gradient(to bottom, #000000a0, #000 60%);
-  padding-top: 280px;
+  padding-top: 240px;
   padding-bottom: 60px;
+}
 
+.wrapper-guia-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 60px;
+  gap: 5px;
+  width: 65vw;
+  margin: 0 auto;
+}
+
+.wrapper-guia-summary > h2 {
+  text-align: center;
+  width: 100%;
+  font-size: 1.2rem;
+  padding-bottom: 10px;
+  user-select: none;
+}
+
+.wrapper-guia-summary > a {
+  color: #ffffff7c;
+  text-align: center;
+  min-width: 120px;
+  padding: 2px 12px;
+  padding-right: 14px;
+  border: 1px solid #ffffff40;
+  border-radius: 5px;
+}
+
+.wrapper-guia-summary > a:hover {
+  color: #fff;
+  border-color: #fff;
+  transition: border-color 0.5s ease;
+  background: #0000005b;
 }
 
 .wrapper-paragraph {
@@ -106,7 +140,6 @@
   margin-top: 4px;
 }
 
-
 .scroll-top {
   display: none;
   background: #000;
@@ -132,16 +165,24 @@
 }
 
 @media screen and (max-width: 800px) {
+  .wrapper-guia-content {
+    padding-top: 220px;
+  }
+
   .wrapper-guia-title > h1 {
     font-size: 2rem;
   }
-
+  
   .wrapper-guia-title > h2 {
     font-size: 1.4rem;
   }
 
   .wrapper-paragraph-title, .wrapper-paragraph-subtitle {
     width: 80vw;
+  }
+ 
+  .wrapper-guia-summary > a {
+    width: 100%;
   }
 
   .wrapper-paragraph {
@@ -155,6 +196,10 @@
 }
 
 @media screen and (max-width: 500px) {
+  .wrapper-guia-title {
+    padding-top: 40px;
+  }
+
   .wrapper-guia-title > h1 {
     font-size: 1.2rem;
   }
@@ -164,7 +209,11 @@
   }
 
   .wrapper-guia-content {
-    padding-top: 200px;
+    padding-top: 120px;
+  }
+
+  .wrapper-guia-summary > h2 {
+    font-size: 1rem;
   }
 
   .wrapper-paragraph-title {

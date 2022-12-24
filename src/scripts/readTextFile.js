@@ -9,6 +9,68 @@
   #img                              img
 */
 
+
+function setTag(text, itemClass, tag) {
+  let itemsItalicLength = text.getElementsByClassName(itemClass).length;
+  for (let i = 0; i < itemsItalicLength; i++) {
+    text.getElementsByClassName(itemClass)[i].innerText =
+      `${tag}${text.getElementsByClassName(itemClass)[i].innerText}${tag}`;
+  }
+  return text;
+}
+
+function removeGoogleDocsHtml(html) {
+  let plainText = document.createElement('div');
+  plainText.innerHTML = html;
+  plainText = plainText.getElementsByClassName('doc-content')[0];
+
+  //set image url and tag
+  let urls = plainText.innerHTML.split('#img');
+  for (let i = 1; i < urls.length; i++) {
+    try {
+      let url = urls[i].split('src="')[1];
+      url = url.split('"')[0];
+      urls[i] = `#img(${url})` + urls[i];
+    } catch (err) {
+      //não encontrou imagens
+    }
+  }
+  plainText.innerHTML = urls.join('');
+
+  //set text styling tags
+  let styles = document.createElement('div');
+  styles.innerHTML = html;
+  styles = styles.getElementsByTagName('style')[1];
+
+  let stylesProperties = {
+    'bold': null,
+    'italic': null,
+    'underline': null,
+  }
+  
+  try {
+    for (let i = 0; i < 7; i++) {
+      let property = styles.innerHTML.split(`.c${i}`)[1];
+      property = property.split('}')[0];
+      if (property.includes('font-weight')) stylesProperties.bold = `c${i}`;
+      else if (property.includes('italic')) stylesProperties.italic = `c${i}`;
+      else if (property.includes('underline')) stylesProperties.underline = `c${i}`;
+    }
+  } catch (err) {
+    //não encontrou texto estilizado
+  }
+
+  plainText = setTag(plainText, stylesProperties.bold, '#b');
+  plainText = setTag(plainText, stylesProperties.italic, '#i');
+  plainText = setTag(plainText, stylesProperties.underline, '#u');
+
+  //removing html tags
+  plainText = plainText.textContent || plainText.innerText || "";
+  plainText = plainText.replaceAll('\t', '');
+  return plainText;
+}
+
+
 function replaceDoubleTag(text, char, newChar) {
   text = text.split(char);
   for (let i = 0; i < text.length-1; i++) {
@@ -87,15 +149,6 @@ function replaceDoubleTag(text, char, newChar) {
   return text;
 }
 
-function setTag(text, itemClass, tag) {
-  let itemsItalicLength = text.getElementsByClassName(itemClass).length;
-  for (let i = 0; i < itemsItalicLength; i++) {
-    text.getElementsByClassName(itemClass)[i].innerText =
-      `${tag}${text.getElementsByClassName(itemClass)[i].innerText}${tag}`;
-  }
-  return text;
-}
-
 function setImageTag(text) {
   let urls = text.split('#img(');
   for (let i = 1; i < urls.length; i++) {
@@ -111,66 +164,41 @@ function setImageTag(text) {
 function setId(text) {
   let div = document.createElement('div');
   div.innerHTML = text;
+
   let itemsLength = div.getElementsByTagName('h2').length;
   for (let i = 0; i < itemsLength; i++) {
     let titulo = div.getElementsByTagName('h2')[i].innerText;
-    titulo = titulo.split(';')[0].trim().toLowerCase()
-      .normalize('NFKD').replace(/[^\w\s.-_\/]/g, '')
-      .replaceAll(' ', '-');
+    titulo = titulo.split(';')[0].trim().toLowerCase().normalize('NFKD')
+    .replace(/[^\w\s.-_\/]/g, '').replaceAll(' ', '-');
     div.getElementsByTagName('h2')[i].id = titulo;
+  }
+  
+  itemsLength = div.getElementsByTagName('h3').length;
+  for (let i = 0; i < itemsLength; i++) {
+    let titulo = div.getElementsByTagName('h3')[i].innerText;
+    titulo = titulo.split(';')[0].trim().toLowerCase().normalize('NFKD')
+      .replace(/[^\w\s.-_\/]/g, '').replaceAll(' ', '-');
+    div.getElementsByTagName('h3')[i].id = titulo;
   }
   return div.outerHTML;
 }
 
-function removeGoogleDocsHtml(html) {
-  let plainText = document.createElement('div');
-  plainText.innerHTML = html;
-  plainText = plainText.getElementsByClassName('doc-content')[0];
-
-  //set image url and tag
-  let urls = plainText.innerHTML.split('#img');
-  for (let i = 1; i < urls.length; i++) {
-    try {
-      let url = urls[i].split('src="')[1];
-      url = url.split('"')[0];
-      urls[i] = `#img(${url})` + urls[i];
-    } catch (err) {
-      //não encontrou imagens
-    }
-  }
-  plainText.innerHTML = urls.join('');
-
-  //set text styling tags
-  let styles = document.createElement('div');
-  styles.innerHTML = html;
-  styles = styles.getElementsByTagName('style')[1];
-
-  let stylesProperties = {
-    'bold': null,
-    'italic': null,
-    'underline': null,
-  }
+function setSummary(text) {
+  let summaryItems = '';
+  let div = document.createElement('div');
+  div.innerHTML = text;
   
-  try {
-    for (let i = 0; i < 7; i++) {
-      let property = styles.innerHTML.split(`.c${i}`)[1];
-      property = property.split('}')[0];
-      if (property.includes('font-weight')) stylesProperties.bold = `c${i}`;
-      else if (property.includes('italic')) stylesProperties.italic = `c${i}`;
-      else if (property.includes('underline')) stylesProperties.underline = `c${i}`;
-    }
-  } catch (err) {
-    //não encontrou texto estilizado
+  let itemH2 = div.getElementsByTagName('h2');
+  let itemH3 = div.getElementsByTagName('h3');
+
+  for (let i = 0; i < itemH2.length; i++) {
+    summaryItems += `<a href='#${itemH2[i].id}'>${itemH2[i].innerText.toUpperCase()}</a>`;
+  }
+  for (let i = 0; i < itemH3.length; i++) {
+    summaryItems += `<a href='#${itemH3[i].id}'>${itemH3[i].innerText.toUpperCase()}</a>`;
   }
 
-  plainText = setTag(plainText, stylesProperties.bold, '#b');
-  plainText = setTag(plainText, stylesProperties.italic, '#i');
-  plainText = setTag(plainText, stylesProperties.underline, '#u');
-
-  //removing html tags
-  plainText = plainText.textContent || plainText.innerText || "";
-  plainText = plainText.replaceAll('\t', '');
-  return plainText;
+  return summaryItems;
 }
 
 
@@ -215,7 +243,9 @@ async function readTextFile(path) {
       //set titles id's
       data = setId(data);
 
-      return data;
+      let summary = setSummary(data);
+
+      return { 'data': data, 'summary': summary }
     });
 
   return response;
