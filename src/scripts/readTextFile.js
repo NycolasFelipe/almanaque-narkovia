@@ -96,6 +96,32 @@ function setTag(text, itemClass, tag) {
   return text;
 }
 
+function setImageTag(text) {
+  let urls = text.split('#img(');
+  for (let i = 1; i < urls.length; i++) {
+    let url = urls[i].split(')')[0];
+    text = text.replaceAll(
+      `#img(${url})`, 
+      `<div className="wrapper-picture"><img src='${url}' className="picture"></img></div>`
+    );
+  }
+  return text;
+}
+
+function setId(text) {
+  let div = document.createElement('div');
+  div.innerHTML = text;
+  let itemsLength = div.getElementsByTagName('h2').length;
+  for (let i = 0; i < itemsLength; i++) {
+    let titulo = div.getElementsByTagName('h2')[i].innerText;
+    titulo = titulo.split(';')[0].trim().toLowerCase()
+      .normalize('NFKD').replace(/[^\w\s.-_\/]/g, '')
+      .replaceAll(' ', '-');
+    div.getElementsByTagName('h2')[i].id = titulo;
+  }
+  return div.outerHTML;
+}
+
 function removeGoogleDocsHtml(html) {
   let plainText = document.createElement('div');
   plainText.innerHTML = html;
@@ -147,6 +173,7 @@ function removeGoogleDocsHtml(html) {
   return plainText;
 }
 
+
 async function readTextFile(path) {
   let response = await fetch(path)
     .then(res => res.text())
@@ -155,14 +182,7 @@ async function readTextFile(path) {
       data = removeGoogleDocsHtml(data);
 
       //replace image
-      let urls = data.split('#img(');
-      for (let i = 1; i < urls.length; i++) {
-        let url = urls[i].split(')')[0];
-        data = data.replaceAll(
-          `#img(${url})`, 
-          `<div className="wrapper-picture"><img src='${url}' className="picture"></img></div>`
-        );
-      }
+      data = setImageTag(data);
 
       //replace title
       data = replaceDoubleTag(data, '#titulo', 'h2');
@@ -192,8 +212,12 @@ async function readTextFile(path) {
       //replace debug tag
       data = replaceDoubleTag(data, '#debug', 'debug');
 
+      //set titles id's
+      data = setId(data);
+
       return data;
     });
+
   return response;
 }
 
