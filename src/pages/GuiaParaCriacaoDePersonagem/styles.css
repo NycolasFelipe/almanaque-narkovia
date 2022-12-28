@@ -1,3 +1,12 @@
+.wrapper-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+}
+
 .wrapper-guia {
   background: url('../../../public/img/home-background.jpg');
   background-size: cover;

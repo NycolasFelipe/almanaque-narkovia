@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ChevronUpIcon } from '@chakra-ui/icons';
+import { Spinner } from '@chakra-ui/react';
 import parse from 'html-react-parser';
 import readTextFile from '../../scripts/readTextFile.js';
 import './styles.css';
-import { ChevronUpIcon } from '@chakra-ui/icons';
 
 function GuiaParaCriacaoDePersonagem() {
   let date = new Date();
@@ -13,12 +14,13 @@ function GuiaParaCriacaoDePersonagem() {
   const navigate = useNavigate();
   const [text, setText] = useState('');
   const [summary, setSummary] = useState('');
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     readTextFile(doc_url).then((res) => {
       setText(res.data);
       setSummary(res.summary);
+      setLoading(false);
     });
 
     window.onscroll = function() {
@@ -33,6 +35,11 @@ function GuiaParaCriacaoDePersonagem() {
   
   return (
     <div className='wrapper-guia'>
+      {loading && (
+        <div className="wrapper-loading">
+          <Spinner color='#fff' size='xl' />
+        </div>
+      )}
       <div className="wrapper-guia-solid"></div>
       <div id='titulo' className='wrapper-guia-title' onClick={() => navigate('/')}>
         <h1>Almanaque de Narkóvia</h1>
