@@ -3,26 +3,29 @@ import { useNavigate } from 'react-router-dom';
 import { ChevronUpIcon } from '@chakra-ui/icons';
 import { Spinner } from '@chakra-ui/react';
 import parse from 'html-react-parser';
+import randomString from '../../scripts/randomString.js';
 import readTextFile from '../../scripts/readTextFile.js';
 import './styles.css';
 
 function GuiaParaCriacaoDePersonagem() {
-  let date = new Date();
-  date = JSON.stringify(date);
-  date = date.replaceAll('-', '').replaceAll(':', '').replaceAll('.', '');
-  const doc_url = `https://docs.google.com/document/d/e/2PACX-1vSIJFBGP2Ie4JodN5Blzg9LCjYX_cTj2WDLJCc4Bn1_RZ2NAgRX7_NpumPoDas7hmk_CpbT17OJ4kx0/pub?${date}`;
+  let random = randomString();
+  const doc_url = `https://docs.google.com/document/d/e/2PACX-1vSIJFBGP2Ie4JodN5Blzg9LCjYX_cTj2WDLJCc4Bn1_RZ2NAgRX7_NpumPoDas7hmk_CpbT17OJ4kx0/pub?${random}`;
   const navigate = useNavigate();
   const [text, setText] = useState('');
   const [summary, setSummary] = useState('');
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    readTextFile(doc_url).then((res) => {
-      setText(res.data);
-      setSummary(res.summary);
-      setLoading(false);
-    });
+  async function loadGoogleDocument() {
+    let res = await readTextFile(doc_url);
+    let htmlSummary = parse(res.summary);
+    let htmlText = parse(res.data);
+    setSummary(htmlSummary);
+    setText(htmlText);
+    setLoading(false);
+  }
 
+  useEffect(() => {
+    loadGoogleDocument();
     window.onscroll = function() {
       var pageOffset = document.documentElement.scrollTop;
       if (pageOffset >= 300) {
@@ -48,9 +51,9 @@ function GuiaParaCriacaoDePersonagem() {
       <div className="wrapper-guia-content">
         <div className='wrapper-guia-summary'>
           <h2>Sumário</h2>
-          {parse(summary)}
+          {summary}
         </div>
-        {parse(text)}
+        {text}
         <a className='scroll-top' href='#titulo'>
           <ChevronUpIcon />
         </a>
