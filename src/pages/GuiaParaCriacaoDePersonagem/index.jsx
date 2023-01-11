@@ -5,7 +5,8 @@ import { Spinner } from '@chakra-ui/react';
 import parse from 'html-react-parser';
 import randomString from '../../scripts/randomString.js';
 import readTextFile from '../../scripts/readTextFile.js';
-import './../../GlobalStyles.css'
+import './../../GlobalStyles.css';
+import './styles.css';
 
 function GuiaParaCriacaoDePersonagem() {
   const random = randomString();

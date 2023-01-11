@@ -31,9 +31,9 @@
 .wrapper-home-options {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 15px;
   width: 100vw;
-  height: 400px;
   position: absolute;
   top: 35vh;
 }
@@ -69,7 +69,7 @@
 }
 @media screen and (max-width: 500px) {
   .wrapper-home-options > button {
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 30px;
     max-width: 80vw;
   }
