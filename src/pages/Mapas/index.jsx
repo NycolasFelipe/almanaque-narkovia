@@ -28,11 +28,10 @@ function Mapas() {
     setText(htmlText);
     setPhotoview(res.photoview);
     setLoading(false);
-    handlePhotoview();
   }
 
   useEffect(() => {
-    loadGoogleDocument();
+    loadGoogleDocument().then(() => handlePhotoview());
     window.onscroll = function() {
       var pageOffset = document.documentElement.scrollTop;
       if (pageOffset >= 300) {
