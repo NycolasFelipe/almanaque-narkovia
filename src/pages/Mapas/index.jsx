@@ -19,7 +19,6 @@ function Mapas() {
   const [summary, setSummary] = useState('');
   const [photoview, setPhotoview] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [loadedPhotoview, setLoadedPhotoview] = useState(false);
 
   async function loadGoogleDocument() {
     let res = await readTextFile(doc_url);
@@ -44,13 +43,10 @@ function Mapas() {
   }, []);
 
   function handlePhotoview() {
-    if (!loadedPhotoview) {
-      let photoviewItems = document.getElementsByClassName('photoview');
-      for (let i = 0; i < photoviewItems.length; i++) {
-        document.getElementsByClassName('photoview-item')[i]
-          .parentNode.append(document.getElementsByClassName('photoview')[i]);
-      }
-      setLoadedPhotoview(true);
+    let photoviewItems = document.getElementsByClassName('photoview');
+    for (let i = 0; i < photoviewItems.length; i++) {
+      document.getElementsByClassName('photoview-item')[i]
+        .parentNode.append(document.getElementsByClassName('photoview')[i]);
     }
   }
 
@@ -73,10 +69,10 @@ function Mapas() {
         <div className="content-text">
           {text}
         </div>
-        <div className="content-photoview" onError={() => handlePhotoview()}>
+        <div className="content-photoview">
           {photoview.map((url, i) => {
             return (
-              <div className="photoview" key={i}>
+              <div className="photoview" key={i} onLoad={() => handlePhotoview()}>
                 <PhotoProvider>
                   <PhotoView src={url}>
                     <img src={url} />
