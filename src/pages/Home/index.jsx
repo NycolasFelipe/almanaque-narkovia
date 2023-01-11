@@ -12,7 +12,18 @@ function Home() {
         <h1>Almanaque de Narkóvia</h1>
       </div>
       <div className='wrapper-home-options'>
-        <Button className='home-button' variant='outline' onClick={() => navigate('/guia-para-criacao-de-personagem')}>Guia para criação de personagem</Button>
+        <Button 
+          variant='outline' 
+          onClick={() => navigate('/guia-para-criacao-de-personagem')}
+        >
+          Guia para criação de personagem
+        </Button>
+        <Button 
+          variant='outline' 
+          onClick={() => navigate('/mapas')}
+        >
+          Mapas
+        </Button>
       </div>
     </div>
   );

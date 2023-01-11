@@ -36,6 +36,19 @@ function removeGoogleDocsHtml(html) {
     }
   }
   plainText.innerHTML = urls.join('');
+  
+  //set image view url and tag
+  urls = plainText.innerHTML.split('#view');
+  for (let i = 1; i < urls.length; i++) {
+    try {
+      let url = urls[i].split('src="')[1];
+      url = url.split('"')[0];
+      urls[i] = `#view(${url})` + urls[i];
+    } catch (err) {
+      //não encontrou imagens
+    }
+  }
+  plainText.innerHTML = urls.join('');
 
   //set text styling tags
   let styles = document.createElement('div');
@@ -67,9 +80,11 @@ function removeGoogleDocsHtml(html) {
   //removing html tags
   plainText = plainText.textContent || plainText.innerText || "";
   plainText = plainText.replaceAll('\t', '');
+
+  styles.remove();
   return plainText;
 }
-
+//
 
 function replaceDoubleTag(text, char, newChar) {
   text = text.split(char);
@@ -77,27 +92,27 @@ function replaceDoubleTag(text, char, newChar) {
     if (i % 2 === 0) {
       switch(newChar) {
         case 'u':
-          text[i] += '<span className="wrapper-paragraph-underline">';
+          text[i] += '<span className="paragraph-underline">';
           break;
         
         case 'h2':
-          text[i] += '<h2 className="wrapper-paragraph-title">';
+          text[i] += '<h2 className="paragraph-title">';
           break;
 
         case 'h3':
-          text[i] += '<h3 className="wrapper-paragraph-subtitle">';
+          text[i] += '<h3 className="paragraph-subtitle">';
           break;
           
         case 'p':
-          text[i] += '<div className="wrapper-paragraph">';
+          text[i] += '<div className="paragraph">';
           break;
 
         case 'pe':
-          text[i] += '<div className="wrapper-paragraph wrapper-paragraph-left">';
+          text[i] += '<div className="paragraph paragraph-left">';
           break;
 
         case 't':
-          text[i] += '<p className="wrapper-paragraph-text">';
+          text[i] += '<p className="paragraph-text">';
           break;
 
         case 'fill':
@@ -155,7 +170,19 @@ function setImageTag(text) {
     let url = urls[i].split(')')[0];
     text = text.replaceAll(
       `#img(${url})`, 
-      `<div className="wrapper-picture"><img src='${url}' className="picture"></img></div>`
+      `<div className="picture"><img src="${url}" className="picture-img"/></div>`
+    );
+  }
+  return text;
+}
+
+function setImageViewTag(text) {
+  let urls = text.split('#view(');
+  for (let i = 1; i < urls.length; i++) {
+    let url = urls[i].split(')')[0];
+    text = text.replaceAll(
+      `#view(${url})`, 
+      `<photoview class="photoview-item" hidden is="x3d" key=${url}>${url}</photoview>`
     );
   }
   return text;
@@ -180,8 +207,12 @@ function setId(text) {
       .replace(/[^\w\s.-_\/]/g, '').replaceAll(' ', '-');
     div.getElementsByTagName('h3')[i].id = titulo;
   }
+
+  div.remove();
   return div.outerHTML;
 }
+//
+
 
 function setSummary(text) {
   let summaryItems = '';
@@ -198,9 +229,24 @@ function setSummary(text) {
     summaryItems += `<a href='#${itemH3[i].id}'>${itemH3[i].innerText.toUpperCase()}</a>`;
   }
 
+  div.remove();
   return summaryItems;
 }
 
+function setPhotoview(text) {
+  let photoviewItems = [];
+  let div = document.createElement('div');
+  div.innerHTML = text;
+
+  let items = div.firstChild.getElementsByTagName('photoview')
+  for (let i = 0; i < items.length; i++) {
+    photoviewItems.push(items[i].innerHTML);
+  }
+  
+  div.remove();
+  return photoviewItems;
+}
+//
 
 async function readTextFile(path) {
   let response = await fetch(path)
@@ -211,6 +257,9 @@ async function readTextFile(path) {
 
       //replace image
       data = setImageTag(data);
+
+      //replace image view
+      data = setImageViewTag(data);
 
       //replace title
       data = replaceDoubleTag(data, '#titulo', 'h2');
@@ -244,8 +293,9 @@ async function readTextFile(path) {
       data = setId(data);
 
       let summary = setSummary(data);
+      let photoview = setPhotoview(data);
 
-      return { 'data': data, 'summary': summary };
+      return { 'data': data, 'summary': summary, 'photoview': photoview };
     });
 
   return response;

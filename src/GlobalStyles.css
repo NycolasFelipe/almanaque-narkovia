@@ -1,3 +1,15 @@
+.photoview > img {
+  margin: 0 auto;
+  max-height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.wrapper-debug {
+  display: none;
+}
+
 .wrapper-loading {
   display: flex;
   justify-content: center;
@@ -5,10 +17,11 @@
   width: 100vw;
   height: 100vh;
   background: #000;
+  position: fixed;
 }
 
-.wrapper-guia {
-  background: url('../../../public/img/home-background.jpg');
+.wrapper {
+  background: url('../public/img/home-background.jpg');
   background-size: cover;
   background-position: fixed;
   background-attachment: fixed;
@@ -17,13 +30,13 @@
   font-family: 'Maven Pro', sans-serif;
 }
 
-.wrapper-guia-solid {
+.wrapper-solid {
   width: 100vw;
   background: #000000a0;
   background-attachment: fixed;
 }
 
-.wrapper-guia-title {
+.wrapper-title {
   width: 100vw;
   text-align: center;
   padding-top: 80px;
@@ -31,7 +44,7 @@
   top: 0;
 }
 
-.wrapper-guia-title > h1 {
+.wrapper-title > h1 {
   color: #fff;
   font-size: 3rem;
   font-weight: 600;
@@ -39,11 +52,11 @@
   cursor: pointer;
 }
 
-.wrapper-guia-title > h1:hover {
+.wrapper-title > h1:hover {
   text-decoration: underline;
 }
 
-.wrapper-guia-title > h2 {
+.wrapper-title > h2 {
   color: #ffffff;
   font-size: 1.6rem;
   font-weight: 300;
@@ -51,7 +64,7 @@
   user-select: none;
 }
 
-.wrapper-guia-content {
+.wrapper-content {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -61,7 +74,7 @@
   padding-bottom: 60px;
 }
 
-.wrapper-guia-summary {
+.content-summary {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -71,7 +84,7 @@
   margin: 0 auto;
 }
 
-.wrapper-guia-summary > h2 {
+.content-summary > h2 {
   text-align: center;
   width: 100%;
   font-size: 1.2rem;
@@ -79,7 +92,7 @@
   user-select: none;
 }
 
-.wrapper-guia-summary > a {
+.content-summary > a {
   color: #ffffff7c;
   text-align: center;
   min-width: 120px;
@@ -89,54 +102,54 @@
   border-radius: 5px;
 }
 
-.wrapper-guia-summary > a:hover {
+.content-summary > a:hover {
   color: #fff;
   border-color: #fff;
   transition: border-color 0.5s ease;
   background: #0000005b;
 }
 
-.wrapper-paragraph {
+.paragraph {
   max-width: 60vw;
   margin: 0 auto;
   padding-bottom: 40px;
   overflow: hidden;
 }
 
-.wrapper-picture {
+.picture {
   padding-top: 20px;
 }
 
-.wrapper-paragraph-left > .wrapper-picture > .picture {
+.paragraph-left > .picture > .picture-img {
   float: left;
   margin-left: 0;
   margin-right: 10px;
 }
 
-.wrapper-paragraph-title {
+.paragraph-title {
   font-size: 1.2rem;
 }
 
-.wrapper-paragraph-subtitle {
+.paragraph-subtitle {
   font-size: 1rem;
 }
 
-.wrapper-paragraph-title, .wrapper-paragraph-subtitle {
+.paragraph-title, .paragraph-subtitle {
   text-transform: uppercase;
   margin: 0 auto;
   padding: 10px 0;
   width: 60vw;
 }
 
-.wrapper-paragraph-title::before {
+.paragraph-title::before {
   content: '⟴ ';
 }
 
-.wrapper-paragraph-underline {
+.paragraph-underline {
   text-decoration: underline;
 }
 
-.wrapper-paragraph-text {
+.paragraph-text {
   margin-top: 0;
   text-align: justify;
   flex: 1;
@@ -146,7 +159,7 @@
   height: 40px;
 }
 
-.picture {
+.picture-img {
   border-radius: 50%;
   height: 180px;
   width: 180px;
@@ -158,6 +171,7 @@
 
 .scroll-top {
   display: none;
+  color: #fff;
   background: #000;
   position: fixed;
   right: 60px;
@@ -176,32 +190,28 @@
   border: 1px solid #ffffffbb;
 }
 
-.wrapper-debug {
-  display: none;
-}
-
 @media screen and (max-width: 800px) {
-  .wrapper-guia-content {
+  .wrapper-content {
     padding-top: 220px;
   }
 
-  .wrapper-guia-title > h1 {
+  .wrapper-title > h1 {
     font-size: 2rem;
   }
   
-  .wrapper-guia-title > h2 {
+  .wrapper-title > h2 {
     font-size: 1.4rem;
   }
 
-  .wrapper-paragraph-title, .wrapper-paragraph-subtitle {
+  .paragraph-title, .paragraph-subtitle {
     width: 80vw;
   }
  
-  .wrapper-guia-summary > a {
+  .content-summary > a {
     width: 100%;
   }
 
-  .wrapper-paragraph {
+  .paragraph {
     max-width: 80vw;
   }
 
@@ -212,46 +222,46 @@
 }
 
 @media screen and (max-width: 500px) {
-  .wrapper-guia-title {
+  .wrapper-title {
     padding-top: 40px;
   }
 
-  .wrapper-guia-title > h1 {
+  .wrapper-title > h1 {
     font-size: 1.2rem;
   }
 
-  .wrapper-guia-title > h2 {
+  .wrapper-title > h2 {
     font-size: 0.9rem;
   }
 
-  .wrapper-guia-content {
+  .wrapper-content {
     padding-top: 120px;
   }
 
-  .wrapper-guia-summary > h2 {
+  .content-summary > h2 {
     font-size: 1rem;
   }
 
-  .wrapper-paragraph-title {
+  .paragraph-title {
     font-size: 1.1em;
   }
 
-  .wrapper-paragraph-subtitle {
+  .paragraph-subtitle {
     font-size: 1rem;
   }
 
-  .wrapper-paragraph {
+  .paragraph {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column-reverse;
     font-size: 0.9rem;
   }
 
-  .wrapper-paragraph-text {
+  .paragraph-text {
     text-align: left;
   }
 
-  .picture {
+  .picture-img {
     float: none !important;
     margin: 0 auto !important;
     margin-top: -10px !important;

@@ -31,11 +31,11 @@
 .wrapper-home-options {
   display: flex;
   justify-content: center;
+  gap: 15px;
   width: 100vw;
   height: 400px;
   position: absolute;
   top: 35vh;
-
 }
 
 .wrapper-home-options > button {
@@ -45,21 +45,18 @@
   width: 300px;
   white-space: normal;
   padding: 40px;
-}
-
-.home-button {
   color: #ffffff7c !important;
   background: transparent !important;
   border-color: #ffffff40 !important;
-
 }
 
-.home-button:hover {
+.wrapper-home-options > button:hover {
   color: #fff !important;
   border-color: #fff !important;
   transition: border-color 0.5s ease !important;
   background: #0000005b !important;
 }
+
 
 @media screen and (max-width: 800px) {
   .wrapper-home-title > h1 {
