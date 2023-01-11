@@ -19,6 +19,7 @@ function Mapas() {
   const [summary, setSummary] = useState('');
   const [photoview, setPhotoview] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadedPhotoview, setLoadedPhotoview] = useState(false);
 
   async function loadGoogleDocument() {
     let res = await readTextFile(doc_url);
@@ -31,7 +32,7 @@ function Mapas() {
   }
 
   useEffect(() => {
-    loadGoogleDocument().then(() => handlePhotoview());
+    loadGoogleDocument();
     window.onscroll = function() {
       var pageOffset = document.documentElement.scrollTop;
       if (pageOffset >= 300) {
@@ -43,13 +44,13 @@ function Mapas() {
   }, []);
 
   function handlePhotoview() {
-    let photoviewItems = document.getElementsByClassName('photoview');
-    for (let i = 0; i < photoviewItems.length; i++) {
-      document.getElementsByClassName('photoview-item')[i]
-        .parentNode.append(document.getElementsByClassName('photoview')[i]);
-    } 
-    for (let i = 0; i < photoviewItems.length; i++) {
-      document.getElementsByClassName('photoview-item')[i].remove();
+    if (!loadedPhotoview) {
+      let photoviewItems = document.getElementsByClassName('photoview');
+      for (let i = 0; i < photoviewItems.length; i++) {
+        document.getElementsByClassName('photoview-item')[i]
+          .parentNode.append(document.getElementsByClassName('photoview')[i]);
+      }
+      setLoadedPhotoview(true);
     }
   }
 
@@ -72,7 +73,7 @@ function Mapas() {
         <div className="content-text">
           {text}
         </div>
-        <div className="content-photoview">
+        <div className="content-photoview" onError={() => handlePhotoview()}>
           {photoview.map((url, i) => {
             return (
               <div className="photoview" key={i}>
