@@ -223,10 +223,10 @@ function setSummary(text) {
   let itemH3 = div.getElementsByTagName('h3');
 
   for (let i = 0; i < itemH2.length; i++) {
-    summaryItems += `<a href='#${itemH2[i].id}'>${itemH2[i].innerText.toUpperCase()}</a>`;
+    summaryItems += `<a href='#${itemH2[i].id}'>${itemH2[i].innerText.toUpperCase().trim()}</a>`;
   }
   for (let i = 0; i < itemH3.length; i++) {
-    summaryItems += `<a href='#${itemH3[i].id}'>${itemH3[i].innerText.toUpperCase()}</a>`;
+    summaryItems += `<a href='#${itemH3[i].id}'>${itemH3[i].innerText.toUpperCase().trim()}</a>`;
   }
 
   div.remove();

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-import { Spinner } from '@chakra-ui/react';
-import { ChevronUpIcon } from '@chakra-ui/icons';
+import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, useDisclosure } from '@chakra-ui/react';
+import { ChevronUpIcon, HamburgerIcon } from '@chakra-ui/icons';
 import readTextFile from '../../scripts/readTextFile';
 import parse from 'html-react-parser';
 import randomString from '../../scripts/randomString';
@@ -19,6 +19,7 @@ function Mapas() {
   const [summary, setSummary] = useState('');
   const [photoview, setPhotoview] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   async function loadGoogleDocument() {
     let res = await readTextFile(doc_url);
@@ -57,10 +58,30 @@ function Mapas() {
           <Spinner color='#fff' size='xl' />
         </div>
       )}
+      <Modal finalFocusRef isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Sumário</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <div className='content-summary-menu' onClick={onClose}>
+              {summary}
+            </div>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Sair
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       <div className="wrapper-solid"></div>
-      <div id='titulo' className='wrapper-title' onClick={() => navigate('/')}>
-        <h1>Almanaque de Narkóvia</h1>
+      <div id='titulo' className='wrapper-title'>
+        <h1 onClick={() => navigate('/')}>Almanaque de Narkóvia</h1>
         <h2>Mapas</h2>
+      </div>
+      <div className='wrapper-menu'>
+        <Button id='menu' onClick={onOpen}><HamburgerIcon /></Button>
       </div>
       <div className="wrapper-content">
         <div className='content-summary'>
