@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+# Almanque de Narkóvia
+<div>
+  <img src="https://user-images.githubusercontent.com/71052352/212166368-9bfbbff8-d2a9-49d6-8278-7edabd336352.jpg" width="330">
+  <img src="https://user-images.githubusercontent.com/71052352/212164852-0a8a41ff-9dfb-47e0-9c63-85bc98b99395.jpg" width="330">
+  <img src="https://user-images.githubusercontent.com/71052352/212166460-bb099a49-7ee7-4a6f-9c0c-6530208dc21e.jpg" width="330">
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Bibliotecas utilizadas
+[`react-router-dom`](https://www.npmjs.com/package/react-router-dom)<br>
+[`styled-components`](https://www.npmjs.com/package/styled-components)<br>
+[`@chakra-ui/react`](https://www.npmjs.com/package/@chakra-ui/react)<br>
+[`@chakra-ui/icons`](https://www.npmjs.com/package/@chakra-ui/icons)<br>
+[`@emotion/react`](https://www.npmjs.com/package/@emotion/react)<br>
+[`@emotion/styled`](https://www.npmjs.com/package/@emotion/styled)<br>
+[`framer-motion`](https://www.npmjs.com/package/framer-motion)<br>
+[`html-react-parser`](https://www.npmjs.com/package/html-react-parser)<br>
+[`react-photo-view`](https://www.npmjs.com/package/react-photo-view)<br>
