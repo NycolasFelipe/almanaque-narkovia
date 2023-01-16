@@ -24,6 +24,7 @@ function GuiaParaCriacaoDePersonagem() {
     setSummary(htmlSummary);
     setText(htmlText);
     setLoading(false);
+    document.getElementsByClassName('wrapper-debug')[0].remove();
   }
 
   useEffect(() => {

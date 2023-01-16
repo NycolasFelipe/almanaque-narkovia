@@ -29,6 +29,7 @@ function Mapas() {
     setText(htmlText);
     setPhotoview(res.photoview);
     setLoading(false);
+    document.getElementsByClassName('wrapper-debug')[0].remove();
   }
 
   useEffect(() => {
