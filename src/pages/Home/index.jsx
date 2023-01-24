@@ -1,9 +1,19 @@
 import { Button } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
+import options from './options';
+import { useEffect } from 'react';
 
 function Home() {
   const navigate = useNavigate();
+
+  function optionButton(text, url, i) {
+    return <Button variant='outline' key={i} onClick={() => navigate(url)}>{text}</Button>
+  }
+
+  useEffect(() => {
+    document.title = 'Almanaque de Narkovia';
+  }, []);
 
   return (
     <div className='wrapper-home'>
@@ -12,18 +22,7 @@ function Home() {
         <h1>Almanaque de Narkóvia</h1>
       </div>
       <div className='wrapper-home-options'>
-        <Button 
-          variant='outline' 
-          onClick={() => navigate('/guia-para-criacao-de-personagem')}
-        >
-          Guia para criação de personagem
-        </Button>
-        <Button 
-          variant='outline' 
-          onClick={() => navigate('/mapas')}
-        >
-          Mapas
-        </Button>
+        {options.map((e, i) => optionButton(e.text, e.url, i))}
       </div>
     </div>
   );

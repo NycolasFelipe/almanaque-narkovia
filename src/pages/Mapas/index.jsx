@@ -5,15 +5,13 @@ import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, 
 import { ChevronUpIcon, HamburgerIcon } from '@chakra-ui/icons';
 import readTextFile from '../../scripts/readTextFile';
 import parse from 'html-react-parser';
-import randomString from '../../scripts/randomString';
 import '../../GlobalStyles.css';
 import 'react-photo-view/dist/react-photo-view.css';
 import './styles.css';
 
 
-function Mapas() {
-  const random = randomString();
-  const doc_url = `https://docs.google.com/document/d/e/2PACX-1vQUL-5060ni5VbXdP20i1hft-P7oXMIe8Yi3xMAXSnp5M9fDDvosiRX7QDzYWAcWpSHNhTOrqjcPP25/pub?${random}`;
+function Mapas(props) {
+  const doc_url = props.url;
   const navigate = useNavigate();
   const [text, setText] = useState([]);
   const [summary, setSummary] = useState('');
@@ -29,7 +27,6 @@ function Mapas() {
     setText(htmlText);
     setPhotoview(res.photoview);
     setLoading(false);
-    document.getElementsByClassName('wrapper-debug')[0].remove();
   }
 
   useEffect(() => {
@@ -42,6 +39,7 @@ function Mapas() {
         document.getElementsByClassName('scroll-top')[0].style.display = 'none';
       }
     }
+    document.title = 'Mapas';
   }, []);
 
   function handlePhotoview() {

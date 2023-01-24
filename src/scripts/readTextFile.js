@@ -1,15 +1,3 @@
-/*
-  TAGS DE MARCAÇÃO
-  #titulo titulo #titulo            h2
-  #subtitulo subtitulo #subtitulo   h3
-  #p #p                             div
-  #pe #pe                           div (para que a imagem fique na esquerda do parágrafo)
-  #t #t                             p
-  #fill                             div (para completar parágrafos com caracteres insuficientes)
-  #img                              img
-*/
-
-
 function setTag(text, itemClass, tag) {
   let itemsItalicLength = text.getElementsByClassName(itemClass).length;
   for (let i = 0; i < itemsItalicLength; i++) {
@@ -19,7 +7,7 @@ function setTag(text, itemClass, tag) {
   return text;
 }
 
-function removeGoogleDocsHtml(html) {
+function replaceGoogleDocsHtml(html) {
   let plainText = document.createElement('div');
   plainText.innerHTML = html;
   plainText = plainText.getElementsByClassName('doc-content')[0];
@@ -65,7 +53,7 @@ function removeGoogleDocsHtml(html) {
     for (let i = 0; i < 7; i++) {
       let property = styles.innerHTML.split(`.c${i}`)[1];
       property = property.split('}')[0];
-      if (property.includes('font-weight')) stylesProperties.bold = `c${i}`;
+      if (property.includes('font-weight:700')) stylesProperties.bold = `c${i}`;
       else if (property.includes('italic')) stylesProperties.italic = `c${i}`;
       else if (property.includes('underline')) stylesProperties.underline = `c${i}`;
     }
@@ -76,6 +64,18 @@ function removeGoogleDocsHtml(html) {
   plainText = setTag(plainText, stylesProperties.bold, '#b');
   plainText = setTag(plainText, stylesProperties.italic, '#i');
   plainText = setTag(plainText, stylesProperties.underline, '#u');
+
+  //set tables
+  let tablesLength = plainText.getElementsByTagName('table').length;
+  for (let i = 0; i < tablesLength; i++) {
+    plainText.getElementsByTagName('table')[i]
+      .insertAdjacentHTML('afterend','<div class="table"></div>');
+    plainText.getElementsByClassName('table')[i]
+      .append(plainText.getElementsByTagName('table')[i].outerHTML);
+  }
+  for (let i = 0; i < tablesLength; i++) {
+    plainText.getElementsByTagName('table')[i].textContent = '';
+  }
 
   //removing html tags
   plainText = plainText.textContent || plainText.innerText || "";
@@ -253,7 +253,7 @@ async function readTextFile(path) {
     .then(res => res.text())
     .then(data => {
       //remove html
-      data = removeGoogleDocsHtml(data);
+      data = replaceGoogleDocsHtml(data);
 
       //replace image
       data = setImageTag(data);
