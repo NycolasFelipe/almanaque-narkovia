@@ -7,14 +7,10 @@ const options = [
     "text": "Mapas",
     "url": "/mapas",
   },
-  // {
-  //   "text": "Personagens",
-  //   "url": "/personagens",
-  // },
-  // {
-  //   "text": "Teste",
-  //   "url": "/teste",
-  // },
+  {
+    "text": "Personagens",
+    "url": "/personagens",
+  },
 ]
 
 export default options;

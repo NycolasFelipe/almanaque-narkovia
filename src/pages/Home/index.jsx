@@ -8,7 +8,7 @@ function Home() {
   const navigate = useNavigate();
 
   function optionButton(text, url, i) {
-    return <Button variant='outline' key={i} onClick={() => navigate(url)}>{text}</Button>
+    return <Button variant='outline' key={i} onClick={() => navigate(url)}>{text}</Button>;
   }
 
   useEffect(() => {

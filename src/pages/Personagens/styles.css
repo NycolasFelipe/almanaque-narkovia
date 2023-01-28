@@ -1,0 +1,38 @@
+.az-order-table {
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.az-order-table--item {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: 'Quintessential', cursive;
+}
+
+.az-order-table--item > span {
+  width: 100%;
+  color: #aaa;
+  border-bottom: 1px solid #606060;
+  margin-bottom: 4px;
+}
+
+.az-order-table--item > a {
+  font-size: 1.4rem;
+  margin: 0 8px;
+}
+
+.az-order-table--item > a:hover {
+  text-decoration: underline;
+}
+
+.az-order-table--item > a:first-of-type {
+  margin-left: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .az-order-table {
+    width: 80vw;
+  }
+}

@@ -250,6 +250,30 @@
   background-color: #202020;
 }
 
+table {
+  margin: 0 auto;
+  width: 60vw;
+  margin-bottom: 40px;
+  border: 3px solid #060c0e;
+  font-size: 0.9rem;
+}
+
+table > tbody > tr:first-of-type {
+  background: #060c0e;
+  font-size: 1.1rem;
+
+}
+
+table > tbody > tr > td:first-of-type {
+  background: #060c0e;
+  width: 50%;
+}
+
+table > tbody > tr > td {
+  padding-left: 10px;
+  line-height: 2;
+  border: 1px solid #112228;
+}
 
 
 @media screen and (max-width: 800px) {
@@ -276,6 +300,10 @@
   .scroll-top {
     right: 20px;
     bottom: 20px;
+  }
+
+  table {
+    width: 80vw;
   }
 }
 
