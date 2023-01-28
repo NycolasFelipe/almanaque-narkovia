@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import NotFound from '../pages/NotFound';
 import Home from '../pages/Home';
 import GuiaParaCriacaoDePersonagem from '../pages/GuiaParaCriacaoDePersonagem';
 import Mapas from '../pages/Mapas';
@@ -14,6 +15,7 @@ function RoutesApp() {
           <Route path='/guia-para-criacao-de-personagem' element={<GuiaParaCriacaoDePersonagem url={url('guia-para-criacao-de-personagem')} />} />
           <Route path='/mapas' element={<Mapas url={url('mapas')} />} />
           <Route path='/personagens' element={<Personagens url={url('personagens')} />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

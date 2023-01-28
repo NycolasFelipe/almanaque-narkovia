@@ -35,6 +35,7 @@
   flex-wrap: wrap;
   gap: 15px;
   width: 100vw;
+  padding: 0 60px;
   position: absolute;
   top: 35vh;
 }

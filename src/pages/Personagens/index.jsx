@@ -4,7 +4,7 @@ import parse from 'html-react-parser';
 import readTextFile from "../../scripts/readTextFile";
 import { Spinner } from "@chakra-ui/react";
 import { ChevronUpIcon } from "@chakra-ui/icons";
-import './../../GlobalStyles.css'
+import './../../GlobalStyles.css';
 
 
 function Personagens(props) {

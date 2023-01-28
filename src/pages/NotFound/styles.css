@@ -1,0 +1,18 @@
+.title-notfound {
+  pointer-events: none;
+}
+
+.content-notfound {
+  height: 100vh;
+}
+
+.content-notfound > div {
+  padding-top: 40px;
+}
+
+@media screen and (max-width: 480px) {
+  .content-notfound > div {
+    padding-top: 0;
+    margin-top: -20px;
+  }
+}
