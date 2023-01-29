@@ -12,13 +12,33 @@ function RoutesApp() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='*' element={<NotFound />} />
-          <Route path='/pagina-nao-encontrada' element={<NotFound />} />
-          <Route path='/' element={<Home />} />
-          <Route path='/guia-para-criacao-de-personagem' element={<GuiaParaCriacaoDePersonagem url={url('guia-para-criacao-de-personagem')} />} />
-          <Route path='/mapas' element={<Mapas url={url('mapas')} />} />
-          <Route path='/personagens' element={<Personagens />} />
-          <Route path='/personagens/:personagem' element={<Personagem />} />
+          <Route 
+            path='*'
+            element={<NotFound title="Página não encontrada" />} 
+          />
+          <Route 
+            path='/pagina-nao-encontrada' 
+            element={<NotFound title="Página não encontrada" />}
+          />
+          <Route 
+            path='/' element={<Home title="Almanaque de Narkovia" />}
+          />
+          <Route 
+            path='/guia-para-criacao-de-personagem' 
+            element={<GuiaParaCriacaoDePersonagem title="Guia para criação de personagem" url={url('guia-para-criacao-de-personagem')} />} 
+          />
+          <Route 
+            path='/mapas' 
+            element={<Mapas title="Mapas" url={url('mapas')} />} 
+          />
+          <Route 
+            path='/personagens' 
+            element={<Personagens title="Personagens" />} 
+          />
+          <Route 
+            path='/personagens/:personagem' 
+            element={<Personagem />} 
+          />
         </Routes>
       </BrowserRouter>
     </div>

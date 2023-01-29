@@ -4,7 +4,7 @@ import './styles.css';
 import options from './options';
 import { useEffect } from 'react';
 
-function Home() {
+function Home(props) {
   const navigate = useNavigate();
 
   function optionButton(text, url, i) {
@@ -12,7 +12,7 @@ function Home() {
   }
 
   useEffect(() => {
-    document.title = 'Almanaque de Narkovia';
+    document.title = props.title;
   }, []);
 
   return (

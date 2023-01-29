@@ -3,43 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { ChevronUpIcon } from "@chakra-ui/icons";
 import './styles.css';
 import './../../GlobalStyles.css';
-import parse from 'html-react-parser';
 import { getOptions } from "./options";
+import azOrderTable from "../../scripts/azOrderTable";
 
-function Personagens() {
+function Personagens(props) {
   const navigate = useNavigate();
+  const options = getOptions();
 
   useEffect(() => {
-    document.title = 'Personagens';
+    document.title = props.title;
   }, []);
-
-  function azOrderTable() {
-    let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-    let div = document.createElement('div');
-    let options = getOptions();
-
-    for (let letter of alphabet) {
-      let item = document.createElement('div');
-      item.className = 'az-order-table--item';
-
-      let itemTitle = document.createElement('span');
-      itemTitle.textContent = letter.toUpperCase();
-      item.append(itemTitle);
-
-      for (let option of options) {
-        if (option.text.toLowerCase()[0] === letter) {
-          let optionLink = document.createElement('a');
-          optionLink.textContent = option.text;
-          optionLink.href = option.url;
-          item.append(optionLink);
-        }
-      }
-      if (item.childElementCount > 1) {
-        div.append(item);
-      }
-    }
-    return parse(div.innerHTML);
-  }
 
   return (
     <div className='wrapper'>
@@ -51,7 +24,7 @@ function Personagens() {
       <div className="wrapper-content" style={{"height": "100vh"}}>
         <div className="content-text">
           <div className="az-order-table">
-            {azOrderTable()}
+            {azOrderTable(options)}
           </div>
         </div>
         <a className='scroll-top' href='#titulo'>

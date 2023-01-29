@@ -5,10 +5,11 @@ import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, 
 import { ChevronUpIcon, HamburgerIcon } from '@chakra-ui/icons';
 import readTextFile from '../../scripts/readTextFile';
 import parse from 'html-react-parser';
+import scrollTop from '../../scripts/scrollTop';
+import handlePhotoview from '../../scripts/handlePhotoView';
 import '../../GlobalStyles.css';
 import 'react-photo-view/dist/react-photo-view.css';
 import './styles.css';
-
 
 function Mapas(props) {
   const doc_url = props.url;
@@ -31,24 +32,9 @@ function Mapas(props) {
 
   useEffect(() => {
     loadGoogleDocument();
-    window.onscroll = function() {
-      var pageOffset = document.documentElement.scrollTop;
-      if (pageOffset >= 300) {
-        document.getElementsByClassName('scroll-top')[0].style.display = 'block';
-      } else {
-        document.getElementsByClassName('scroll-top')[0].style.display = 'none';
-      }
-    }
-    document.title = 'Mapas';
+    scrollTop();
+    document.title = props.title;
   }, []);
-
-  function handlePhotoview() {
-    let photoviewItems = document.getElementsByClassName('photoview');
-    for (let i = 0; i < photoviewItems.length; i++) {
-      document.getElementsByClassName('photoview-item')[i]
-        .parentNode.append(document.getElementsByClassName('photoview')[i]);
-    }
-  }
 
   return (
     <div className="wrapper">

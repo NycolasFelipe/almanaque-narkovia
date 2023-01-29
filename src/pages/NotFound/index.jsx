@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@chakra-ui/react';
 import { useEffect } from 'react';
 
-function NotFound() {
+function NotFound(props) {
   const navigate = useNavigate();
 
   function optionButton(text, url, i) {
@@ -13,7 +13,7 @@ function NotFound() {
   }
 
   useEffect(() => {
-    document.title = 'Página não encontrada';
+    document.title = props.title;
   }, []);
 
   return (

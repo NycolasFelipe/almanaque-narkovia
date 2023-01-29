@@ -4,6 +4,7 @@ import { ChevronUpIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, useDisclosure } from '@chakra-ui/react';
 import parse from 'html-react-parser';
 import readTextFile from '../../scripts/readTextFile.js';
+import scrollTop from '../../scripts/scrollTop.js';
 import './../../GlobalStyles.css';
 import './styles.css';
 
@@ -26,15 +27,8 @@ function GuiaParaCriacaoDePersonagem(props) {
 
   useEffect(() => {
     loadGoogleDocument();
-    window.onscroll = function() {
-      var pageOffset = document.documentElement.scrollTop;
-      if (pageOffset >= 300) {
-        document.getElementsByClassName('scroll-top')[0].style.display = 'block';
-      } else {
-        document.getElementsByClassName('scroll-top')[0].style.display = 'none';
-      }
-    }
-    document.title = 'Guia para criação de personagem';
+    scrollTop();
+    document.title = props.title;
   }, []);
   
   return (

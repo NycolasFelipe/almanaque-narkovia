@@ -7,6 +7,7 @@ import { ChevronUpIcon, HamburgerIcon } from "@chakra-ui/icons";
 import parse from 'html-react-parser';
 import readTextFile from "../../scripts/readTextFile";
 import titleCase from '../../scripts/titleCase';
+import scrollTop from "../../scripts/scrollTop";
 
 function Personagem() {
   const navigate = useNavigate();
@@ -34,19 +35,12 @@ function Personagem() {
   }
 
   useEffect(() => {
-    if (personagemDocUrl == undefined) {
+    if (personagemDocUrl === undefined) {
       navigate('/pagina-nao-encontrada');
     }
-    loadGoogleDocument();
-    window.onscroll = function() {
-      var pageOffset = document.documentElement.scrollTop;
-      if (pageOffset >= 300) {
-        document.getElementsByClassName('scroll-top')[0].style.display = 'block';
-      } else {
-        document.getElementsByClassName('scroll-top')[0].style.display = 'none';
-      }
-    }
     document.title = handleTitle(personagem);
+    loadGoogleDocument();
+    scrollTop();
   }, []);
 
   return (
