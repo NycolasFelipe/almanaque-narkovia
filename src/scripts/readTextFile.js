@@ -123,6 +123,10 @@ function replaceDoubleTag(text, char, newChar) {
           text[i] += '<div className="wrapper-debug">';
           break;
         
+        case 'ficha':
+          text[i] += '<div className="ficha">';
+          break;
+        
         default:
           text[i] += `<${newChar}>`;
           break;
@@ -133,27 +137,15 @@ function replaceDoubleTag(text, char, newChar) {
         case 'u': 
           text[i] += '</span>';
           break;
-
-        case 'p':
-          text[i] += '</div>';
-          break;
-
-        case 'pe':
-          text[i] += '</div>';
-          break;
           
         case 't':
           text[i] += '</p>';
           break;
-        
-        case 'fill':
-          text[i] += '</div>';
-          break;
 
-        case 'debug':
+        case 'p', 'pe', 'fill', 'debug', 'ficha':
           text[i] += '</div>';
           break;
-        
+   
         default:
           text[i] += `</${newChar}>`;
           break;

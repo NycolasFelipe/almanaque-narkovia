@@ -8,6 +8,7 @@ const urls = {
 export const personagens = {
   "modelo": "https://docs.google.com/document/d/e/2PACX-1vQK-BjFTiu1WNsTK9OZT0ismrlQVes7zgqB10pcttISceA3_jHhj1ex-u5kdKK-iBudfx5TLOss85kO/pub",
   "lua-amaya": "https://docs.google.com/document/d/e/2PACX-1vSZvx0SZhUZE8zFPHIscDdrPv6PICBWV3707bHWVIHiFnFpQ46jxd90_scRxjG0ZOnyijDRaTB0ACRv/pub",
+  "zenite-podwick": "https://docs.google.com/document/d/e/2PACX-1vScF7SyRIzOl8gJ3a1QiIBT1UslUaJljPCRNz5CTGNR2H33ylC3uLPUZ7YLtCT1Gd3IDQsdd45m64WT/pub",
 }
 
 export function url(name) {
