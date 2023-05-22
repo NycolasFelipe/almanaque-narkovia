@@ -1,9 +1,5 @@
 const options = [
   {
-    "text": "Modelo",
-    "url": "/personagens/modelo",
-  },
-  {
     "text": "Lua Amaya",
     "url": "/personagens/lua-amaya",
   },

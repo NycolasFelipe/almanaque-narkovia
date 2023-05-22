@@ -1,3 +1,7 @@
+html {
+  background: #000;
+}
+
 .photoview > img {
   margin: 0 auto;
   max-height: 300px;
@@ -265,7 +269,6 @@ table {
 table > tbody > tr:first-of-type {
   background: #060c0e;
   font-size: 1.1rem;
-
 }
 
 table > tbody > tr > td:first-of-type {
@@ -277,6 +280,232 @@ table > tbody > tr > td {
   padding-left: 10px;
   line-height: 2;
   border: 1px solid #112228;
+}
+
+/* Ficha */
+.ficha {
+  width: 50vw;
+  height: 155px;
+  margin: 0 auto;
+  padding-top: 60px;
+  padding-left: 8vw;
+  background: url('../public/img/scroll_2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #000;
+  font-weight: bold;
+  font-family: 'Quintessential', cursive;
+  transition: height 1s ease;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 60px;
+}
+
+.ficha-aberta {
+  height: 820px !important;
+}
+
+.ficha > .picture {
+  flex: 1;
+}
+
+.ficha > .picture > img {
+  width: auto;
+  height: auto;
+}
+
+.ficha > table {
+  width: 100%;
+  border: none;
+  background: initial;
+}
+
+.ficha > table > tbody > tr > td:first-of-type {
+  width: initial;
+}
+
+.ficha > div > table > tbody > tr,
+.ficha > div > table > tbody > tr > td,
+.ficha > div > table > tbody > tr > td:first-of-type {
+  background: transparent;
+}
+/*  */
+
+/* Informações */
+.ficha-informacoes {
+  display: flex;
+  float: left;
+  border: none;
+  width: 16vw;
+}
+
+.ficha-informacoes > table {
+  border: none;
+}
+
+.ficha-informacoes > table > tbody > tr > td {
+  display: inline-block;
+  border: none !important;
+}
+
+.ficha-informacoes > table > tbody > tr > td:first-child {
+  width: fit-content;
+  filter: opacity(60%);
+  line-height: 1;
+}
+
+.ficha-informacoes > table > tbody > tr > td{
+  line-height: 1;
+  font-size: 1.2rem;
+}
+/*  */
+
+/* Atributos */
+.ficha-atributos {
+  display: flex;
+  overflow: hidden;
+}
+
+.ficha-atributos > table {
+  border: none;
+  margin-top: -5px;
+}
+
+.ficha-atributos > table > thead > tr > td:first-of-type {
+  padding-left: 10px;
+}
+
+.ficha-atributos > table > thead > tr:first-child > td {
+  width: fit-content;
+  filter: opacity(60%);
+  line-height: 1.4;
+  font-size: 1.2rem;
+}
+
+.ficha-atributos > table > thead > tr:nth-child(2) > td {
+  margin-left: 8px;
+  font-size: 1.1rem;
+}
+
+.ficha-atributos > table > thead > tr > td:last-of-type {
+  padding-left: 20px;
+}
+
+.ficha-atributos > table > thead > tr:not(:first-child) > td {
+  display: inline-flex;
+  border: none !important;
+  font-size: 1.2rem;
+  margin-left: 8px;
+}
+
+.ficha-atributos > table > thead > tr:not(:first-child) > td:first-child {
+  width: fit-content;
+}
+
+.ficha-atributos > table > thead > tr > td > p > span {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.ficha-atributos > table > thead > tr > td > p > span > img {
+  max-width: 100% !important;
+  height: auto !important;
+  filter: grayscale(100%);
+  filter: opacity(20%);
+}
+/*  */
+
+/* Complicacoes */
+.ficha-complicacoes {
+  width: 16vw;
+  float: left;
+}
+
+.ficha-complicacoes > table > tbody > tr {
+  font-size: 1.2rem;
+}
+
+.ficha-complicacoes > table,
+.ficha-complicacoes > table > tbody > tr > td {
+  border: none;
+  line-height: 1.4;
+}
+
+.ficha-complicacoes > table > tbody > tr:first-child > td {
+  width: fit-content;
+  filter: opacity(60%);
+  line-height: 1;
+}
+/*  */
+
+/* Vantagens */
+.ficha-vantagens {
+  float: right;
+  width: 25vw;
+}
+
+.ficha-vantagens > table,
+.ficha-vantagens > table > tbody > tr > td {
+  border: none;
+  line-height: 1.4;
+}
+
+.ficha-vantagens > table > tbody > tr {
+  font-size: 1.2rem;
+}
+
+.ficha-vantagens > table > tbody > tr:first-child > td {
+  width: fit-content;
+  filter: opacity(60%);
+  line-height: 1;
+}
+/*  */
+
+/* Equipamento */
+.ficha-equipamento > table,
+.ficha-equipamento > table > tbody > tr > td {
+  border: none;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.ficha-equipamento > table > tbody > tr:first-child > td {
+  width: fit-content;
+  filter: opacity(60%);
+  line-height: 1;
+}
+/*  */
+
+@media screen and (max-width: 1199px) {
+  .ficha {
+    background: url('../public/img/scroll_mobile.png');
+    background-repeat: repeat;
+    background-position-y: -60px;
+    border-radius: 40px;
+    padding-top: 30px;
+    padding-left: 4vw;
+  }
+  
+  .ficha-aberta {
+    height: 1160px !important;
+  }
+
+  .ficha-informacoes {
+    float: none;
+    width: 100%;
+  }
+
+  .ficha-atributos {
+    margin-left: -10px;
+  }
+
+  .ficha-complicacoes {
+    float: none;
+  }
+
+  .ficha-vantagens {
+    float: none;
+  }
 }
 
 

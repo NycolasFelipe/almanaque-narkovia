@@ -26,12 +26,20 @@ function Personagem() {
     setSummary(htmlSummary);
     setText(htmlText);
     setLoading(false);
+    abreFicha();
   }
 
   function handleTitle(title) {
     title = title.replaceAll('-', ' ');
     title = titleCase(title);
     return title;
+  }
+
+  function abreFicha() {
+    const ficha = document.getElementsByClassName('ficha')[0];
+    ficha.addEventListener('click', function() {
+      ficha.classList.toggle('ficha-aberta');
+    });
   }
 
   useEffect(() => {

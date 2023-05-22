@@ -126,6 +126,26 @@ function replaceDoubleTag(text, char, newChar) {
         case 'ficha':
           text[i] += '<div className="ficha">';
           break;
+
+        case 'ficha-informacoes':
+          text[i] += '<div className="ficha-informacoes">';
+          break;
+          
+        case 'ficha-atributos':
+          text[i] += '<div className="ficha-atributos">';
+          break;
+          
+        case 'ficha-complicacoes':
+          text[i] += '<div className="ficha-complicacoes">';
+          break;
+          
+        case 'ficha-vantagens':
+          text[i] += '<div className="ficha-vantagens">';
+          break;
+          
+        case 'ficha-equipamento':
+          text[i] += '<div className="ficha-equipamento">';
+          break;
         
         default:
           text[i] += `<${newChar}>`;
@@ -142,7 +162,19 @@ function replaceDoubleTag(text, char, newChar) {
           text[i] += '</p>';
           break;
 
-        case 'p', 'pe', 'fill', 'debug', 'ficha':
+        case 'p':
+        case 'pe':
+        case 'fill': 
+        case 'debug':
+          text[i] += '</div>';
+          break;
+          
+        case 'ficha':
+        case 'ficha-informacoes':
+        case 'ficha-atributos':
+        case 'ficha-complicacoes':
+        case 'ficha-vantagens':
+        case 'ficha-equipamento':
           text[i] += '</div>';
           break;
    
@@ -238,7 +270,7 @@ function setPhotoview(text) {
   div.remove();
   return photoviewItems;
 }
-//
+
 
 async function readTextFile(path) {
   let response = await fetch(path)
@@ -280,6 +312,14 @@ async function readTextFile(path) {
 
       //replace debug tag
       data = replaceDoubleTag(data, '#debug', 'debug');
+
+      //replace ficha
+      data = replaceDoubleTag(data, '#ficha-informacoes', 'ficha-informacoes');
+      data = replaceDoubleTag(data, '#ficha-atributos', 'ficha-atributos');
+      data = replaceDoubleTag(data, '#ficha-complicacoes', 'ficha-complicacoes');
+      data = replaceDoubleTag(data, '#ficha-vantagens', 'ficha-vantagens');
+      data = replaceDoubleTag(data, '#ficha-equipamento', 'ficha-equipamento');
+      data = replaceDoubleTag(data, '#ficha', 'ficha');
 
       //set titles id's
       data = setId(data);
