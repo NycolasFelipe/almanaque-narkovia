@@ -26,7 +26,6 @@ function Personagem() {
     setSummary(htmlSummary);
     setText(htmlText);
     setLoading(false);
-    abreFicha();
   }
 
   function handleTitle(title) {
@@ -47,7 +46,7 @@ function Personagem() {
       navigate('/pagina-nao-encontrada');
     }
     document.title = handleTitle(personagem);
-    loadGoogleDocument();
+    loadGoogleDocument().then(() => abreFicha());
     scrollTop();
   }, []);
 
