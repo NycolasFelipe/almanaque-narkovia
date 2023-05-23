@@ -25,6 +25,7 @@ function Personagem() {
     let htmlText = parse(res.data);
     setSummary(htmlSummary);
     setText(htmlText);
+    abreFicha(res);
     setLoading(false);
   }
 
@@ -34,11 +35,16 @@ function Personagem() {
     return title;
   }
 
-  function abreFicha() {
-    const ficha = document.getElementsByClassName('ficha')[0];
-    ficha.addEventListener('click', function() {
-      ficha.classList.toggle('ficha-aberta');
-    });
+  function abreFicha(res) {
+    let ficha;
+    try {
+      ficha = document.getElementsByClassName('ficha')[0];
+      ficha.addEventListener('click', function() {
+        ficha.classList.toggle('ficha-aberta');
+      });
+    } catch (err) {
+      // err
+    }
   }
 
   useEffect(() => {
@@ -46,7 +52,7 @@ function Personagem() {
       navigate('/pagina-nao-encontrada');
     }
     document.title = handleTitle(personagem);
-    loadGoogleDocument().then(() => abreFicha());
+    loadGoogleDocument();
     scrollTop();
   }, []);
 
