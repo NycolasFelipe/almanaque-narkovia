@@ -27,6 +27,7 @@ function Personagem() {
     setText(htmlText);
     abreFicha(res);
     setLoading(false);
+    abreFicha();
   }
 
   function handleTitle(title) {
