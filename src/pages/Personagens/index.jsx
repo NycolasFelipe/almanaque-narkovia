@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronUpIcon } from "@chakra-ui/icons";
-import './styles.css';
-import './../../GlobalStyles.css';
 import { getOptions } from "./options";
 import azOrderTable from "../../scripts/azOrderTable";
+import './styles.css';
 
 function Personagens(props) {
   const navigate = useNavigate();
@@ -16,7 +15,6 @@ function Personagens(props) {
 
   return (
     <div className='wrapper'>
-      <div className="wrapper-solid"></div>
       <div id='titulo' className='wrapper-title'>
         <h1 onClick={() => navigate('/')}>Almanaque de Narkóvia</h1>
         <h2>Personagens</h2>

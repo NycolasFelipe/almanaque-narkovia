@@ -3,10 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { ChevronUpIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, useDisclosure } from '@chakra-ui/react';
 import parse from 'html-react-parser';
-import readTextFile from '../../scripts/readTextFile.js';
+import processGoogleDocsFile from '../../scripts/processGoogleDocsFile.js';
 import scrollTop from '../../scripts/scrollTop.js';
-import './../../GlobalStyles.css';
-import './styles.css';
 
 function GuiaParaCriacaoDePersonagem(props) {
   const doc_url = props.url;
@@ -17,7 +15,7 @@ function GuiaParaCriacaoDePersonagem(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   async function loadGoogleDocument() {
-    let res = await readTextFile(doc_url);
+    let res = await processGoogleDocsFile(doc_url);
     let htmlSummary = parse(res.summary);
     let htmlText = parse(res.data);
     setSummary(htmlSummary);
@@ -55,7 +53,6 @@ function GuiaParaCriacaoDePersonagem(props) {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <div className="wrapper-solid"></div>
       <div id='titulo' className='wrapper-title'>
         <h1 onClick={() => navigate('/')}>Almanaque de Narkóvia</h1>
         <h2>Guia para criação de personagem</h2>

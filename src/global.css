@@ -1,8 +1,25 @@
+body {
+  font-family: 'Lora', serif;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+  background: #000;
+}
+
+body::-webkit-scrollbar-thumb {
+  --webkit-box-shadow: inset 0 0 6px #0000004d;
+  background-color: #202020;
+}
+
 html {
   background: #000;
 }
 
-.photoview > img {
+.photoview>img {
   margin: 0 auto;
   max-height: 300px;
   border-radius: 10px;
@@ -27,7 +44,7 @@ html {
 }
 
 .wrapper {
-  background: url('../public/img/home-background.jpg');
+  background: url('../public/img/background.jpg');
   background-size: cover;
   background-position: fixed;
   background-attachment: fixed;
@@ -36,21 +53,14 @@ html {
   font-family: 'Maven Pro', sans-serif;
 }
 
-.wrapper-solid {
-  width: 100vw;
-  background: #000000a0;
-  background-attachment: fixed;
-}
-
 .wrapper-title {
-  background: #000000a0;
   width: 100vw;
   text-align: center;
   padding-top: 80px;
   top: 0;
 }
 
-.wrapper-title > h1 {
+.wrapper-title>h1 {
   color: #fff;
   font-size: 3rem;
   font-weight: 600;
@@ -59,11 +69,11 @@ html {
   cursor: pointer;
 }
 
-.wrapper-title > h1:hover {
+.wrapper-title>h1:hover {
   text-decoration: underline;
 }
 
-.wrapper-title > h2 {
+.wrapper-title>h2 {
   color: #ffffff;
   font-size: 3rem;
   line-height: 1;
@@ -78,7 +88,6 @@ html {
   flex-wrap: wrap;
   flex-direction: column;
   color: #fff;
-  background: linear-gradient(to bottom, #000000a0, #000 60%);
   padding: 60px 0;
 }
 
@@ -92,7 +101,7 @@ html {
   margin: 0 auto;
 }
 
-.content-summary > h2 {
+.content-summary>h2 {
   text-align: center;
   width: 100%;
   font-size: 1.2rem;
@@ -100,7 +109,7 @@ html {
   user-select: none;
 }
 
-.content-summary > a {
+.content-summary>a {
   color: #ffffff7c;
   text-align: center;
   min-width: 120px;
@@ -110,7 +119,7 @@ html {
   font-size: 1.2rem;
 }
 
-.content-summary > a:hover {
+.content-summary>a:hover {
   color: #fff;
   border-color: #fff;
   transition: border-color 0.5s ease;
@@ -129,7 +138,7 @@ html {
   padding-top: 20px;
 }
 
-.paragraph-left > .picture > .picture-img {
+.paragraph-left>.picture>.picture-img {
   float: left;
   margin-left: 0;
   margin-right: 10px;
@@ -143,7 +152,8 @@ html {
   font-size: 1.2rem;
 }
 
-.paragraph-title, .paragraph-subtitle {
+.paragraph-title,
+.paragraph-subtitle {
   text-transform: uppercase;
   margin: 0 auto;
   margin-top: 60px;
@@ -205,17 +215,16 @@ html {
   display: none;
   justify-content: center;
   padding-top: 40px;
-  background: #000000a0;
 }
 
 #menu {
   background: transparent;
-  border: 1px solid #ffffff40 ;
+  border: 1px solid #ffffff40;
   color: #fff;
   width: 70%;
 }
 
-#menu:hover{
+#menu:hover {
   border-color: #fff;
   transition: all 0.3s ease;
 }
@@ -224,7 +233,7 @@ html {
   flex-wrap: wrap;
 }
 
-.content-summary-menu > a {
+.content-summary-menu>a {
   width: 100%;
   border: 1px solid #353535;
   border-radius: 5px;
@@ -232,7 +241,7 @@ html {
   margin-bottom: 10px;
 }
 
-.content-summary-menu > a:hover {
+.content-summary-menu>a:hover {
   border-color: #fff;
   transition: all 0.3s ease;
 }
@@ -241,7 +250,7 @@ html {
   color: #fff;
 }
 
-.chakra-modal__content-container > section {
+.chakra-modal__content-container>section {
   background: #000000;
   margin-top: 0;
   border-radius: 0;
@@ -266,255 +275,29 @@ table {
   font-size: 1rem;
 }
 
-table > tbody > tr:first-of-type {
+table>tbody>tr:first-of-type {
   background: #060c0e;
   font-size: 1.1rem;
 }
 
-table > tbody > tr > td:first-of-type {
+table>tbody>tr>td:first-of-type {
   background: #060c0e;
   width: 50%;
 }
 
-table > tbody > tr > td {
+table>tbody>tr>td {
   padding-left: 10px;
   line-height: 2;
   border: 1px solid #112228;
+  background: #0b1418;
 }
-
-/* Ficha */
-.ficha {
-  width: 50vw;
-  height: 155px;
-  margin: 0 auto;
-  padding-top: 60px;
-  padding-left: 8vw;
-  background: url('../public/img/scroll_2.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #000;
-  font-weight: bold;
-  font-family: 'Quintessential', cursive;
-  transition: height 1s ease;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 60px;
-}
-
-.ficha-aberta {
-  height: 820px !important;
-}
-
-.ficha > .picture {
-  flex: 1;
-}
-
-.ficha > .picture > img {
-  width: auto;
-  height: auto;
-}
-
-.ficha > table {
-  width: 100%;
-  border: none;
-  background: initial;
-}
-
-.ficha > table > tbody > tr > td:first-of-type {
-  width: initial;
-}
-
-.ficha > div > table > tbody > tr,
-.ficha > div > table > tbody > tr > td,
-.ficha > div > table > tbody > tr > td:first-of-type {
-  background: transparent;
-}
-/*  */
-
-/* Informações */
-.ficha-informacoes {
-  display: flex;
-  float: left;
-  border: none;
-  width: 16vw;
-}
-
-.ficha-informacoes > table {
-  border: none;
-}
-
-.ficha-informacoes > table > tbody > tr > td {
-  display: inline-block;
-  border: none !important;
-}
-
-.ficha-informacoes > table > tbody > tr > td:first-child {
-  width: fit-content;
-  filter: opacity(60%);
-  line-height: 1;
-}
-
-.ficha-informacoes > table > tbody > tr > td{
-  line-height: 1;
-  font-size: 1.2rem;
-}
-/*  */
-
-/* Atributos */
-.ficha-atributos {
-  display: flex;
-  overflow: hidden;
-}
-
-.ficha-atributos > table {
-  border: none;
-  margin-top: -5px;
-}
-
-.ficha-atributos > table > thead > tr > td:first-of-type {
-  padding-left: 10px;
-}
-
-.ficha-atributos > table > thead > tr:first-child > td {
-  width: fit-content;
-  filter: opacity(60%);
-  line-height: 1.4;
-  font-size: 1.2rem;
-}
-
-.ficha-atributos > table > thead > tr:nth-child(2) > td {
-  margin-left: 8px;
-  font-size: 1.1rem;
-}
-
-.ficha-atributos > table > thead > tr > td:last-of-type {
-  padding-left: 20px;
-}
-
-.ficha-atributos > table > thead > tr:not(:first-child) > td {
-  display: inline-flex;
-  border: none !important;
-  font-size: 1.2rem;
-  margin-left: 8px;
-}
-
-.ficha-atributos > table > thead > tr:not(:first-child) > td:first-child {
-  width: fit-content;
-}
-
-.ficha-atributos > table > thead > tr > td > p > span {
-  width: 30px !important;
-  height: 30px !important;
-}
-
-.ficha-atributos > table > thead > tr > td > p > span > img {
-  max-width: 100% !important;
-  height: auto !important;
-  filter: grayscale(100%);
-  filter: opacity(20%);
-}
-/*  */
-
-/* Complicacoes */
-.ficha-complicacoes {
-  width: 16vw;
-  float: left;
-}
-
-.ficha-complicacoes > table > tbody > tr {
-  font-size: 1.2rem;
-}
-
-.ficha-complicacoes > table,
-.ficha-complicacoes > table > tbody > tr > td {
-  border: none;
-  line-height: 1.4;
-}
-
-.ficha-complicacoes > table > tbody > tr:first-child > td {
-  width: fit-content;
-  filter: opacity(60%);
-  line-height: 1;
-}
-/*  */
-
-/* Vantagens */
-.ficha-vantagens {
-  float: right;
-  width: 25vw;
-}
-
-.ficha-vantagens > table,
-.ficha-vantagens > table > tbody > tr > td {
-  border: none;
-  line-height: 1.4;
-}
-
-.ficha-vantagens > table > tbody > tr {
-  font-size: 1.2rem;
-}
-
-.ficha-vantagens > table > tbody > tr:first-child > td {
-  width: fit-content;
-  filter: opacity(60%);
-  line-height: 1;
-}
-/*  */
-
-/* Equipamento */
-.ficha-equipamento > table,
-.ficha-equipamento > table > tbody > tr > td {
-  border: none;
-  font-size: 1.2rem;
-  line-height: 1.4;
-}
-
-.ficha-equipamento > table > tbody > tr:first-child > td {
-  width: fit-content;
-  filter: opacity(60%);
-  line-height: 1;
-}
-/*  */
-
-@media screen and (max-width: 1199px) {
-  .ficha {
-    background: url('../public/img/scroll_mobile.png');
-    background-repeat: repeat;
-    background-position-y: -60px;
-    border-radius: 40px;
-    padding-top: 30px;
-    padding-left: 4vw;
-  }
-  
-  .ficha-aberta {
-    height: 1160px !important;
-  }
-
-  .ficha-informacoes {
-    float: none;
-    width: 100%;
-  }
-
-  .ficha-atributos {
-    margin-left: -10px;
-  }
-
-  .ficha-complicacoes {
-    float: none;
-  }
-
-  .ficha-vantagens {
-    float: none;
-  }
-}
-
 
 @media screen and (max-width: 800px) {
-  .wrapper-title > h1 {
+  .wrapper-title>h1 {
     font-size: 2rem;
   }
-  
-  .wrapper-title > h2 {
+
+  .wrapper-title>h2 {
     font-size: 2.4rem;
   }
 
@@ -522,7 +305,8 @@ table > tbody > tr > td {
     width: 90vw;
   }
 
-  .paragraph-title, .paragraph-subtitle {
+  .paragraph-title,
+  .paragraph-subtitle {
     width: 80vw;
   }
 
@@ -545,17 +329,17 @@ table > tbody > tr > td {
     padding-top: 40px;
   }
 
-  .wrapper-title > h1, 
-  .wrapper-title > h2 {
+  .wrapper-title>h1,
+  .wrapper-title>h2 {
     margin: 0 auto;
     width: 80vw;
   }
-  
-  .wrapper-title > h1 {
+
+  .wrapper-title>h1 {
     font-size: 1.3rem;
   }
 
-  .wrapper-title > h2 {
+  .wrapper-title>h2 {
     font-size: 1.6rem;
   }
 

@@ -11,6 +11,10 @@ const options = [
     "text": "Personagens",
     "url": "/personagens",
   },
+  {
+    "text": "Narkovia Awards",
+    "url": "/narkovia-awards",
+  },
 ]
 
 export default options;

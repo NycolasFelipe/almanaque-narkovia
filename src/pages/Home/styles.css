@@ -1,5 +1,5 @@
 .wrapper-home {
-  background: url('../../../public/img/home-background.jpg');
+  background: url('../../../public/img/background.jpg');
   background-size: cover;
   width: 100vw;
   height: 100vh;
@@ -8,7 +8,6 @@
 .wrapper-home-blur {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(to bottom, #000000a0 80%, #000);
 }
 
 .wrapper-home-title {

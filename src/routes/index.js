@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { url } from './doc_url';
 import NotFound from '../pages/NotFound';
 import Home from '../pages/Home';
 import GuiaParaCriacaoDePersonagem from '../pages/GuiaParaCriacaoDePersonagem';
 import Mapas from '../pages/Mapas';
 import Personagens from '../pages/Personagens';
 import Personagem from '../pages/Personagem';
-import { url } from './doc_url';
+import NarkoviaAwards from '../pages/NarkoviaAwards';
 
 function RoutesApp() {
   return (
@@ -22,6 +23,10 @@ function RoutesApp() {
           />
           <Route 
             path='/' element={<Home title="Almanaque de Narkovia" />}
+          />
+          <Route 
+            path='/narkovia-awards' 
+            element={<NarkoviaAwards title="Narkovia Awards" url={url('narkovia-awards')} />} 
           />
           <Route 
             path='/guia-para-criacao-de-personagem' 

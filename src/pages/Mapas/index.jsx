@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, useDisclosure } from '@chakra-ui/react';
 import { ChevronUpIcon, HamburgerIcon } from '@chakra-ui/icons';
-import readTextFile from '../../scripts/readTextFile';
+import processGoogleDocsFile from '../../scripts/processGoogleDocsFile';
 import parse from 'html-react-parser';
 import scrollTop from '../../scripts/scrollTop';
 import handlePhotoview from '../../scripts/handlePhotoView';
-import '../../GlobalStyles.css';
 import 'react-photo-view/dist/react-photo-view.css';
 import './styles.css';
 
@@ -21,7 +20,7 @@ function Mapas(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   async function loadGoogleDocument() {
-    let res = await readTextFile(doc_url);
+    let res = await processGoogleDocsFile(doc_url);
     let htmlSummary = parse(res.summary);
     let htmlText = parse(res.data);
     setSummary(htmlSummary);
@@ -60,7 +59,6 @@ function Mapas(props) {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <div className="wrapper-solid"></div>
       <div id='titulo' className='wrapper-title'>
         <h1 onClick={() => navigate('/')}>Almanaque de Narkóvia</h1>
         <h2>Mapas</h2>

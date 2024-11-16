@@ -1,6 +1,7 @@
 import randomString from "../scripts/randomString";
 
 const urls = {
+  "narkovia-awards": "https://docs.google.com/document/d/e/2PACX-1vTJI5cQe5lmJKeMoXVIV48rgjlWzNtmhph95l8NmP3JXU_AcXtEcFztLPqJFkW_9Zk38VvHDWtBbOls/pub",
   "guia-para-criacao-de-personagem": "https://docs.google.com/document/d/e/2PACX-1vSIJFBGP2Ie4JodN5Blzg9LCjYX_cTj2WDLJCc4Bn1_RZ2NAgRX7_NpumPoDas7hmk_CpbT17OJ4kx0/pub",
   "mapas": "https://docs.google.com/document/d/e/2PACX-1vQUL-5060ni5VbXdP20i1hft-P7oXMIe8Yi3xMAXSnp5M9fDDvosiRX7QDzYWAcWpSHNhTOrqjcPP25/pub",
 }

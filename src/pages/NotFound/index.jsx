@@ -1,9 +1,8 @@
-import './styles.css';
-import './../../GlobalStyles.css';
-import options from '../Home/options';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import options from '../Home/options';
+import './styles.css';
 
 function NotFound(props) {
   const navigate = useNavigate();
@@ -19,7 +18,6 @@ function NotFound(props) {
   return (
     <div>
       <div className='wrapper'>
-        <div className="wrapper-solid"></div>
         <div id='titulo' className='wrapper-title title-notfound'>
           <h1>Página não encontrada...</h1>
           <h2>Essas são algumas páginas úteis:</h2>
